@@ -17,12 +17,7 @@ def read_sales_data() -> list[dict[str, str|int]]:
     sales_path: str = os.path.join(CURRENT_DIR, "sales_data.csv")
     sales_data: list[dict[str, str | int]] = []
 
-    with open(sales_path, "r") as sales_csv_file:
-        reader = csv.DictReader(sales_csv_file)
-        for row_dict in reader:
-            row_dict["Amount"] = int(row_dict["Amount"])
-            sales_data.append(row_dict)
-    return sales_data
+    return None
 
 
 def read_employee_data() -> list[dict[str, str|float|int]]:
@@ -36,13 +31,8 @@ def read_employee_data() -> list[dict[str, str|float|int]]:
     """
     employee_path: str = os.path.join(CURRENT_DIR, "employee_data.csv")
     employee_data: list[dict[str, str | int]] = []
-
-    with open(employee_path, "r") as employee_csv_file:
-        reader = csv.DictReader(employee_csv_file)
-        for row_dict in reader:
-            row_dict["Salary"] = int(row_dict["Salary"])
-            employee_data.append(row_dict)
-    return employee_data
+    
+    return None
 
 
 def calculate_total_sales(sales_data: list[dict[str, str|int]]) -> int:
@@ -55,11 +45,7 @@ def calculate_total_sales(sales_data: list[dict[str, str|int]]) -> int:
     Returns:
     - total_sales (float): Total sales amount.
     """
-    # total: int = 0
-    # for sale_data in sales_data:
-    #     total += sale_data["Amount"]
-    # return total
-    return sum([sale_data["Amount"] for sale_data in sales_data])
+    return None
         
 
 
@@ -73,7 +59,7 @@ def calculate_average_sales(sales_data: list[dict[str, str|int]]) -> float:
     Returns:
     - average_sales (float): Average sales amount.
     """
-    return calculate_total_sales(sales_data) / len(sales_data)
+    return None
 
 def calculate_median_sales(sales_data: list[dict[str, str|int]]):
     """
@@ -85,9 +71,7 @@ def calculate_median_sales(sales_data: list[dict[str, str|int]]):
     Returns:
     - median_sales (float): Median sales amount.
     """
-    amounts: list[int] = sorted([sale_data["Amount"] for sale_data in sales_data])
-    mid: int = len(amounts) // 2
-    return float(amounts[mid]) if len(amounts)%2==1 else (amounts[mid-1] + amounts[mid]) / 2
+    return None
 
 def calculate_total_salary_expenses(employee_data):
     """
@@ -99,7 +83,7 @@ def calculate_total_salary_expenses(employee_data):
     Returns:
     - total_salary_expenses (float): Total salary expenses.
     """
-    return sum([emp_data["Salary"] for emp_data in employee_data])
+    return None
 
 
 def calculate_average_salary(employee_data):
@@ -112,7 +96,7 @@ def calculate_average_salary(employee_data):
     Returns:
     - average_salary (float): Average salary.
     """
-    return calculate_total_salary_expenses(employee_data) / len(employee_data)
+    return None
 
 def calculate_median_salary(employee_data):
     """
@@ -124,8 +108,7 @@ def calculate_median_salary(employee_data):
     Returns:
     - median_salary (float): Median salary.
     """
-    from statistics import median
-    return median([emp_data["Salary"] for emp_data in employee_data])
+    return None
 
 
 def find_employee_with_highest_sales(sales_data, employee_data) -> tuple[str, str]:
@@ -140,38 +123,7 @@ def find_employee_with_highest_sales(sales_data, employee_data) -> tuple[str, st
     - employee_name (str): Name of the employee with the highest sales amount.
     - department_name (str): Name of the department of the employee with the highest sales amount.
     """
-    # sales_per_employee: dict[str, int] = {}
-    # for sale_data in sales_data:
-    #   emp_id: str = sale_data["EmployeeID"]
-    #   amount: int = sale_data["Amount"]
-
-    #   if emp_id in sales_per_employee:
-    #     sales_per_employee[emp_id] = sales_per_employee[emp_id] + amount
-    #   else:
-    #     sales_per_employee[emp_id] = 0 + amount
-    
-    # max_emp: str = ""
-    # max_amount: int = -1e100
-
-    # for emp_id, total_amounts in sales_per_employee.items():
-    #   if total_amounts > max_amount:
-    #     max_amount = total_amounts
-    #     max_emp = emp_id
-    
-    # for emp_data in employee_data:
-    #     if emp_data["EmployeeID"] == max_emp:
-    #         return emp_data["Name"], emp_data["Department"]
-    
-    # raise ValueError("No maximum found")
-
-    sales_per_employee: dict[str, int] = {}
-    for sale_data in sales_data:
-      emp_id: str = sale_data["EmployeeID"]
-      amount: int = sale_data["Amount"]
-      sales_per_employee[emp_id] = sales_per_employee.get(emp_id, 0) + amount
-    # max_emp_index: int = int(max(sales_per_employee, key=lambda emp_id: sales_per_employee[emp_id]))-1
-    max_emp_index: int = int(max(sales_per_employee, key=sales_per_employee.get))-1
-    return employee_data[max_emp_index]["Name"], employee_data[max_emp_index]["Department"] 
+    return None
 
 def find_department_with_highest_sales(sales_data, employee_data):
     """
@@ -184,19 +136,7 @@ def find_department_with_highest_sales(sales_data, employee_data):
     Returns:
     - department_name (str): Name of the department with the highest sales.
     """
-    dep_per_emp: dict[str, str] = {}
-    for emp_data in employee_data:
-      emp_id: str = emp_data["EmployeeID"]
-      emp_dep: str = emp_data["Department"]
-      dep_per_emp[emp_id] = emp_dep
-
-    sales_per_dep: dict[str, int] = {}
-    for sale_data in sales_data:
-      dep: str = dep_per_emp[sale_data["EmployeeID"]]
-      amount: int = sale_data["Amount"]
-      sales_per_dep[dep] = sales_per_dep.get(dep, 0) + amount
-
-    return max(sales_per_dep, key=sales_per_dep.get)
+    return None
 
 
 # def plot_sales_by_department(sales_data, employee_data):
