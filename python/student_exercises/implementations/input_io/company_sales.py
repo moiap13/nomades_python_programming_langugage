@@ -123,7 +123,7 @@ def find_employee_with_highest_sales(sales_data, employee_data) -> tuple[str, st
     - employee_name (str): Name of the employee with the highest sales amount.
     - department_name (str): Name of the department of the employee with the highest sales amount.
     """
-    return None
+    return None, None
 
 def find_department_with_highest_sales(sales_data, employee_data):
     """
@@ -136,7 +136,7 @@ def find_department_with_highest_sales(sales_data, employee_data):
     Returns:
     - department_name (str): Name of the department with the highest sales.
     """
-    return None
+    return None, None
 
 
 # def plot_sales_by_department(sales_data, employee_data):
