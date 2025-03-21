@@ -13,7 +13,10 @@ def update_length_label(value: float):
     length_label.configure(text=f"Length: {int(value)}")
 
 def generate_click():
-    password = generate_password(uppercase_var.get(), lowercase_var.get(), digits_var.get(), special_var.get(), int(length_slider.get())) 
+    try:
+      password = generate_password(uppercase_var.get(), lowercase_var.get(), digits_var.get(), special_var.get(), int(length_slider.get())) 
+    except ValueError as e:
+       password = str(e)
     password_entry.delete(0, ctk.END)
     password_entry.insert(0, password)
 

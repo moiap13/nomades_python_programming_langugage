@@ -216,8 +216,24 @@ def find_department_with_highest_sales(sales_data, employee_data):
     user_dep: dict[str, str] = {}
     for emp_dct in employee_data:
         user_dep[emp_dct["EmployeeID"]] = emp_dct["Department"]
+    
+    total_dep_sales: dict[str, int] = {}
+    for sale_dct in sales_data:
+        user_department: str = user_dep[sale_dct["EmployeeID"]]
+        if user_department in total_dep_sales:
+            total_dep_sales[user_department] += sale_dct["Amount"]
+        else:
+            total_dep_sales[user_department] = sale_dct["Amount"]
+    
+    max_total: int = -(10e-100)
+    max_dep: str = ""
 
-    return None, None
+    for dep, dep_total_sales in total_dep_sales.items():
+        if dep_total_sales > max_total:
+            max_total = dep_total_sales
+            max_dep = dep
+    
+    return max_dep
 
 
 # def plot_sales_by_department(sales_data, employee_data):
