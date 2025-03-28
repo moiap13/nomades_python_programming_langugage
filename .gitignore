@@ -49,7 +49,6 @@ numpy_pandas/student_exercises/implementations/data_aquisition/web_scrapping/bas
 numpy_pandas/student_exercises/implementations/data_aquisition/web_scrapping/IMDB/
 numpy_pandas/student_exercises/implementations/data_aquisition/web_scrapping/Selenium/
 numpy_pandas/student_exercises/implementations/data_visualization/
-numpy_pandas/student_exercises/implementations/jupyter/
 numpy_pandas/student_exercises/implementations/matplotlib/
 numpy_pandas/student_exercises/implementations/ML/
 
@@ -61,7 +60,6 @@ numpy_pandas/student_exercises/corrections/data_visualization/
 numpy_pandas/student_exercises/corrections/jupyter/
 numpy_pandas/student_exercises/corrections/matplotlib/
 numpy_pandas/student_exercises/corrections/ML/
-numpy_pandas/student_exercises/corrections/numpy/
 numpy_pandas/student_exercises/corrections/numpy copy/
 
 # Flask - Web
