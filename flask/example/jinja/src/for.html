@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block title %}
+  For
+{% endblock %}
+
+{% block contents %}
+  <h1>Welcome For</h1>
+  <ul>
+    {% for fruit in fruits[:3] %}
+      <li>{{ fruit }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
