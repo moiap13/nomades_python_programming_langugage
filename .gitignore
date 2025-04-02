@@ -78,6 +78,11 @@ flask/example/forms_files/
 flask/example/jinja/
 flask/example/posts_firestore/
 flask/example/ssti/
+flask/example/flaskblog_posts_charts/
+flask/example/sessions/
+flask/example/streamlit/
+flask/example/streamlit_multipages/
+flask/example/wtforms/
 
 # student_exercises
 # implementations
@@ -88,6 +93,13 @@ flask/student_exercises/implementations/flask_login_firestore/
 flask/student_exercises/implementations/flask_login_firestore_query/
 flask/student_exercises/implementations/flask_login_without_redirect/
 flask/student_exercises/implementations/flask_login_wtf_firestore/
+flask/student_exercises/implementations/first_server_dynamics_routes/
+flask/student_exercises/implementations/flask_login_firestore_old/
+flask/student_exercises/implementations/flask_login_firestore_wtforms/
+flask/student_exercises/implementations/flask_login_sessions/
+flask/student_exercises/implementations/flaskblog/
+flask/student_exercises/implementations/flaskblog_posts_by_users/
+flask/student_exercises/implementations/flaskblog_view_post/
 
 # corrections
 flask/student_exercises/corrections/Firestore_posts/
@@ -97,6 +109,13 @@ flask/student_exercises/corrections/flask_login_firestore/
 flask/student_exercises/corrections/flask_login_firestore_query/
 flask/student_exercises/corrections/flask_login_without_redirect/
 flask/student_exercises/corrections/flask_login_0/
+flask/student_exercises/corrections/flask_login_firestore_old/
+flask/student_exercises/corrections/flask_login_firestore_wtforms/
+flask/student_exercises/corrections/flask_login_session/
+flask/student_exercises/corrections/flaskblog/
+flask/student_exercises/corrections/flaskblog_posts_by_users/
+flask/student_exercises/corrections/flaskblog_view_post/
+
 
 # Falsk - REST API
 rest_api/env.yaml
