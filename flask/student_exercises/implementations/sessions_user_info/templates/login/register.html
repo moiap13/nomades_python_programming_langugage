@@ -1,0 +1,30 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+  Register
+{% endblock title %}
+
+{% block contents %}
+  <h1>Register</h1>
+  <form action="{{ url_for('register') }}" method="POST">
+    <div class="mb-3">
+      <label for="tbx_email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="tbx_email" name="tbx_email" >
+    </div>
+    <div class="mb-3">
+      <label for="tbx_pwd" class="form-label">Password</label>
+      <input type="password" class="form-control" id="tbx_pwd" name="tbx_pwd" >
+    </div>
+    <div class="mb-3">
+      <label for="tbx_pwd_repeat" class="form-label">Repeat Password</label>
+      <input type="password" class="form-control" id="tbx_pwd_repeat" name="tbx_pwd_repeat" >
+    </div>
+    <!-- TODO: Add input for new values -->
+    <!-- tbx_firstname - text -->
+    <!-- tbx_lastname - text -->
+    <!-- tbx_username - text -->
+    <!-- dp_dob - date -->
+    <!-- r_gender - radio_button -->
+    <button type="submit">Register</button>
+  </form>
+{% endblock contents %}
