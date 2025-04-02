@@ -5,7 +5,8 @@
 {% endblock title %}
 
 {% block contents %}
-  <form action="" method="POST"> <!-- TODO: Set the action for the register route -->
+  <h1>Register</h1>
+  <form action="/register" method="POST">
     <div class="mb-3">
       <label for="tbx_email" class="form-label">Email address</label>
       <input type="email" class="form-control" id="tbx_email" name="tbx_email" >
@@ -18,6 +19,6 @@
       <label for="tbx_pwd_repeat" class="form-label">Repeat Password</label>
       <input type="password" class="form-control" id="tbx_pwd_repeat" name="tbx_pwd_repeat" >
     </div>
-    <button type="submit">Login</button>
+    <button type="submit">Register</button>
   </form>
 {% endblock contents %}
