@@ -1,0 +1,3 @@
+firstname,lastname,username,dob,gender,email,password,salt
+Antonio,Pisanello,moiap13,2025-04-01,male,test@test.com,ef188c1fd44c4f210787e43edbf7bd642aa21f525fb0da2d045569af12a1c3e4,CBOHUQKTFL
+Mathieu,Deslage,matt,2025-04-03,male,test@matt.com,04b0618b354b28d5fa3adab12c7de4ab89bbbd66b7403837c63e3bfd4eade1f3,IFYXRFHQWU
