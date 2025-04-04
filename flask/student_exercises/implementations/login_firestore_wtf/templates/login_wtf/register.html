@@ -1,0 +1,13 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+  Register
+{% endblock title %}
+
+{% block contents %}
+<h1>Register</h1>
+<form action="{{ url_for('register') }}" method="POST">
+    <!-- TODO: Add WTF inputs for all the fields defined in the class -->
+    <button type="submit" class="form-control">Register</button>
+  </form>
+{% endblock contents %}

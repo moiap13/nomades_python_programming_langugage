@@ -1,0 +1,14 @@
+{% macro displayInput(input, showErrors=True) %}
+  <div class="mb-3">
+    {{ input.label(class="form-label") }}
+    {{ input(class="form-control", **kwargs) }}
+    {% if showErrors and input.errors %}
+      <div class="alert alert-danger" role="alert">
+
+        {% for error in input.errors %}
+        <span>{{ error }}<span>
+        {% endfor %}
+    </div>
+      {% endif %}
+  </div>
+{% endmacro %}
