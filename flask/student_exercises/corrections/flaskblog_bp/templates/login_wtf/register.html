@@ -1,0 +1,22 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import displayInput   %}
+
+{% block title %}
+  Register
+{% endblock title %}
+
+{% block contents %}
+<h1>Register</h1>
+<form action="{{ url_for('login.register') }}" method="POST">
+    <!-- Add WTF inputs for all the fields defined in the class -->
+    {{ displayInput(form.firstname) }}
+    {{ displayInput(form.lastname) }}
+    {{ displayInput(form.username) }}
+    {{ displayInput(form.dob) }}
+    {{ displayInput(form.gender, enclosedDiv=False) }}
+    {{ displayInput(form.email) }}
+    {{ displayInput(form.pwd) }}
+    {{ displayInput(form.pwd2) }}
+    <button type="submit" class="form-control">Register</button>
+  </form>
+{% endblock contents %}

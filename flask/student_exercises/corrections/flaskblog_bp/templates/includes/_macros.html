@@ -1,0 +1,18 @@
+{% macro displayInput(input, showErrors=True, enclosedDiv=True) %}
+  {% if enclosedDiv %}
+    <div class="mb-3">
+  {% endif %}  
+      {{ input.label(class="form-label") }}
+      {{ input(class="form-control", **kwargs) }}
+      {% if showErrors and input.errors %}
+        <div class="alert alert-danger" role="alert">
+
+          {% for error in input.errors %}
+          <span>{{ error }}<span>
+          {% endfor %}
+      </div>
+        {% endif %}
+  {% if enclosedDiv %}
+    </div>  
+  {% endif %}
+{% endmacro %}

@@ -1,0 +1,58 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+  Register
+{% endblock title %}
+
+{% block contents %}
+<h1>Register</h1>
+<form action="{{ url_for('register') }}" method="POST">
+    <!-- Add input for new values -->
+    <!-- tbx_firstname - text -->
+    <!-- tbx_lastname - text -->
+    <!-- tbx_username - text -->
+    <!-- dp_dob - date -->
+    <!-- r_gender - radio_button -->
+    <div class="mb-3">
+      <label for="tbx_firstname" class="form-label">Firstname</label>
+      <input type="text" class="form-control" id="tbx_firstname" name="tbx_firstname" required>
+    </div>
+    <div class="mb-3">
+      <label for="tbx_lastname" class="form-label">Lastname</label>
+      <input type="text" class="form-control" id="tbx_lastname" name="tbx_lastname" required>
+    </div>
+    <div class="mb-3">
+      <label for="tbx_username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="tbx_username" name="tbx_username" required>
+    </div>
+    <div class="mb-3">
+      <label for="d_dob" class="form-label">Date of birth</label>
+      <input type="date" class="form-control" id="d_dob" name="dp_dob" required>
+    </div>
+    <div class="mb-3">
+      <h5>Gender</h5>
+      <div>
+        <input type="radio" id="r_gender_f" name="r_gender" value="female" checked>
+        <label for="r_gender_f" class="form-label">Female</label>
+      </div>
+      <div>
+        <input type="radio" id="r_gender_m" name="r_gender" value="male" >
+        <label for="r_gender_m" class="form-label">Male</label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="tbx_email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="tbx_email" name="tbx_email" required>
+    </div>
+    <div class="mb-3">
+      <label for="tbx_pwd" class="form-label">Password</label>
+      <input type="password" class="form-control" id="tbx_pwd" name="tbx_pwd" required>
+    </div>
+    <div class="mb-3">
+      <label for="tbx_pwd_repeat" class="form-label">Repeat Password</label>
+      <input type="password" class="form-control" id="tbx_pwd_repeat" name="tbx_pwd_repeat" required>
+    </div>
+    <button type="submit" class="form-control">Register</button>
+    <button type="reset" class="form-control">Reset</button>
+  </form>
+{% endblock contents %}
