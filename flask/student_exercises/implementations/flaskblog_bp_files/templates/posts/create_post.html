@@ -1,0 +1,20 @@
+{#
+  TODO:
+  - Create a form with action your create post route and method POST
+  - Display the forms input from the form parameter comming from render_template function (You can use the macro displayInput :D)
+#}
+
+{% extends 'includes/_base.html' %}
+{% from "includes/_macros.html" import displayInput %}
+
+{% block title %}
+  Create Post
+{% endblock title %}
+
+{% block contents %}
+  <form action="{{ url_for('posts.create_post') }}" method="POST">
+    {{ displayInput(form.title) }}
+    {{ displayInput(form.body) }}
+    <button type="submit" class="btn btn-primary">Post</button>
+  </form>
+{% endblock contents %}

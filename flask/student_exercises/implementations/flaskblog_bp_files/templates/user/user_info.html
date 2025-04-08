@@ -1,0 +1,34 @@
+{% extends 'includes/_base.html' %}
+
+{% block contents %}
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12" style="text-align: center;">
+          <img src="{{ url_for('static', filename='uploads/'+user['profile_picture']) }}" alt="User Profile Picture" width="100px" height="100px" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12" style="text-align: center;">
+          <h1>{{ user["firstname"] }} {{ user["lastname"] }}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6" style="text-align: right;"><h5>Username</h5></div>
+        <div class="col-6"><p>{{ user["username"] }}</p></div>
+      </div>
+      <div class="row">
+        <div class="col-6" style="text-align: right;"><h5>Email</h5></div>
+        <div class="col-6"><p>{{ user["email"] }}</p></div>
+      </div>
+      <div class="row">
+        <div class="col-6" style="text-align: right;"><h5>Gender</h5></div>
+        <div class="col-6"><p>{{ user["gender"] }}</p></div>
+      </div>
+      <div class="row">
+        <div class="col-6" style="text-align: right;"><h5>Date of Birth</h5></div>
+        <div class="col-6"><p>{{ user["date_of_birth"] }}</p></div>
+      </div>
+    </div>
+  </div>
+{% endblock contents %}

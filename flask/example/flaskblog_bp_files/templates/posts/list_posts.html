@@ -1,0 +1,45 @@
+{# TODO:
+  - Get a list of posts from render template (list of posts is a list of dictionnaries given in parameter)
+  - Display all the posts as a list: you can use <ul><li></li></ul> or bootsrap cards
+#}
+
+{% extends 'includes/_base.html' %}
+{% from "includes/_macros.html" import displayInput %}
+
+{% block header %}
+<style>
+  .truncate {
+    width: 100%; /* adjust the width to your needs */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>
+{% endblock header %}
+
+{% block title %}
+  List Post ({{ posts | count }})
+{% endblock title %}
+
+{% block contents %}
+  <div class="row">
+    {% for post in posts %}
+      <div class="col-md">
+        <!-- SOURCE: https://getbootstrap.com/docs/4.0/components/card/ -->
+        <div class="card mb-2" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ post.author }}</h6>
+            <p class="card-text truncate">{{ post.body }}</p>
+            <a href="#" class="card-link">View</a>
+            <a href="{{ url_for('posts.delete_post_by_id', id=post.id) }}" class="card-link text-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="col-12">
+        <p>You did'nt post nothing at this time</p>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock contents %}
