@@ -35,7 +35,7 @@ def login():
 
 @app.route("/signup", methods=["GET", "POST"])
 def register():
-  # TODO: check if we are comming from GET or POST method
+  # check if we are comming from GET or POST method
   if request.method == "POST":
     # If method == "POST", we want to insert the user in the csv file
     email: str = request.form.get("tbx_email")
