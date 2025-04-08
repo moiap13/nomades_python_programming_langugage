@@ -9,6 +9,7 @@ from firebase_admin.firestore import DocumentSnapshot
 
 from forms.login import LoginForm, RegisterForm
 from helpers.random_password_generator import generate_password as generate_salt
+from helpers.decorators import authenticated
 from config.firestore_connection import db
 
 login_bp = Blueprint("login", __name__)
@@ -115,6 +116,7 @@ def register():
   return render_template("login_wtf/register.html", form=form)
 
 @login_bp.route("/logout")
+@authenticated
 def logout():
   session.clear()
   flash("logout successful", "success")

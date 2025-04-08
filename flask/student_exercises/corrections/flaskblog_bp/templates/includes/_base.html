@@ -40,8 +40,8 @@
               Posts
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Create new Posts</a></li> <!-- TODO: Adapt links to point to the create post route -->
-              <li><a class="dropdown-item" href="#">List all my posts</a></li> <!-- TODO: Adapt links to point to my posts route -->
+              <li><a class="dropdown-item" href="{{ url_for('posts.create_post') }}">Create new Posts</a></li> <!-- TODO: Adapt links to point to the create post route -->
+              <li><a class="dropdown-item" href="{{ url_for('posts.my_posts') }}">List all my posts</a></li> <!-- TODO: Adapt links to point to my posts route -->
             </ul>
           </li>
           <li class="nav-item">
