@@ -1,0 +1,23 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+  Index
+{% endblock title %}
+
+{% block contents %}
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Post per Date (line)</h1>
+      <img src="{{ url_for('static', filename='plots/post_per_date_line.png') }}">
+    </div>
+    <div class="col-md-6">
+      <h1>Post per Date (bar)</h1>
+      <img src="{{ url_for('static', filename='plots/post_per_date_bar.png') }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      {{ data | safe }}
+    </div>
+  </div>
+{% endblock contents %}

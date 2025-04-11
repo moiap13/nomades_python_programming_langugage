@@ -1,0 +1,23 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+  Index
+{% endblock title %}
+
+{% block contents %}
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Post per Date (line)</h1>
+      {{ post_date_count_line | safe }}
+    </div>
+    <div class="col-md-6">
+      <h1>Post per Date (bar)</h1>
+      {{ post_date_count_bar | safe }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      {{ data | safe }}
+    </div>
+  </div>
+{% endblock contents %}
