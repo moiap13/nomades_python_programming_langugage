@@ -55,7 +55,6 @@ numpy_pandas/examples/pandas/
 
 # student_exercises
 # implementations
-numpy_pandas/student_exercises/implementations/data_aquisition/REST_API/
 numpy_pandas/student_exercises/implementations/data_aquisition/web_scrapping/basic/country_capitals/
 numpy_pandas/student_exercises/implementations/data_aquisition/web_scrapping/IMDB/
 numpy_pandas/student_exercises/implementations/data_aquisition/web_scrapping/Selenium/
@@ -64,7 +63,7 @@ numpy_pandas/student_exercises/implementations/jupyter/
 numpy_pandas/student_exercises/implementations/matplotlib/
 numpy_pandas/student_exercises/implementations/ML/
 numpy_pandas/student_exercises/implementations/numpy/
-numpy_pandas/student_exercises/implementations/pandas/
+numpy_pandas/student_exercises/implementations/pandas/titanic/
 
 # corrections
 numpy_pandas/student_exercises/corrections/data_aquisition/REST_API/
