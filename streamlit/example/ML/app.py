@@ -22,7 +22,7 @@ def main():
         image_arr = np.array(resized_image) / 255
         image_arr = image_arr.reshape(1, 32, 32, 3)
 
-        model = tf.keras.models.load_model("cifar10_model.h5")
+        model = tf.keras.models.load_model("cifar10_model_2.h5")
         prediction = model.predict(image_arr)
         cifar10_classes = [
             "airplane",

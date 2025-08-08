@@ -26,30 +26,31 @@ y_val = to_categorical(y_val, 10)
 
 print(X_train.shape)
 
-# model = [
-#   Sequential(),
-#   Conv2D(32, (3, 3), padding='same', input_shape=X_train.shape[1:]),
-#   Activation('relu'),
-#   Conv2D(32, (3, 3)),
-#   Activation('relu'),
-#   MaxPooling2D(pool_size=(2, 2)),
-#   Dropout(0.25),
-#   Flatten(),
-#   Dense(512),
-#   Activation('relu'),
-#   Dropout(0.5),
-#   Dense(10),
-#   Activation('softmax')
-# ]
-
 model = Sequential(
     [
-        Input(shape=(32, 32, 3)),
+        Conv2D(32, (3, 3), padding="same", input_shape=X_train.shape[1:]),
+        Activation("relu"),
+        Conv2D(32, (3, 3)),
+        Activation("relu"),
+        MaxPooling2D(pool_size=(2, 2)),
+        Dropout(0.25),
         Flatten(),
-        Dense(20000, activation="relu"),
-        Dense(10, activation="softmax"),
+        Dense(512),
+        Activation("relu"),
+        Dropout(0.5),
+        Dense(10),
+        Activation("softmax"),
     ]
 )
+
+# model = Sequential(
+#     [
+#         Input(shape=(32, 32, 3)),
+#         Flatten(),
+#         Dense(20000, activation="relu"),
+#         Dense(10, activation="softmax"),
+#     ]
+# )
 
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 
