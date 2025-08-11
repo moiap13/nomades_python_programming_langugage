@@ -76,7 +76,6 @@ numpy_pandas/student_exercises/corrections/numpy/
 numpy_pandas/student_exercises/corrections/numpy copy/
 
 # Flask - Web
-flask/env.yml
 flask/test.py
 
 # example
@@ -91,6 +90,11 @@ flask/example/forms_files/
 flask/example/jinja/
 flask/example/posts_firestore/
 flask/example/ssti/
+flask/example/BP/
+flask/example/docker/
+flask/example/plots/
+flask/example/sessions/
+flask/example/WTForms/
 
 # student_exercises
 # implementations
