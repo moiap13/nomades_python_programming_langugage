@@ -1,0 +1,26 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+My posts
+{% endblock %}
+
+{% block contents %}
+<h1>My posts</h1>
+<div class="row">
+  {% for post in posts%}
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ post["title"] }}</h5>
+        <p class="card-text">
+          {{ post["body"] }}
+        </p>
+        {% if post.get("mine", False) %}
+        <a href="/posts/delete/{{ post['id'] }}" class="btn btn-danger">delete post</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

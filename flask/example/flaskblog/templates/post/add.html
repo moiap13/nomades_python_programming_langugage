@@ -1,0 +1,20 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+Add Post
+{% endblock %}
+
+{% block contents %}
+<h1>Add Post</h1>
+<form action="/posts/add" method="POST">
+  <div class="mb-3">
+    <label for="tbx_title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="tbx_title" placeholder="Title" name="tbx_title" required>
+  </div>
+  <div class="mb-3">
+    <label for="tbx_body" class="form-label">Body</label>
+    <textarea class="form-control" id="tbx_body" placeholder="Body" name="tbx_body" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Post</button>
+</form>
+{% endblock %}
