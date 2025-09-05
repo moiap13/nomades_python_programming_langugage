@@ -1,0 +1,23 @@
+name: Grade Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-pyc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+
+      - name: Run compiled test files
+        working-directory: ./Answers
+        run: |
+          python QCM.pyc || exit 1
+          python part2.pyc || exit 1
+          python part3.pyc || exit 1
