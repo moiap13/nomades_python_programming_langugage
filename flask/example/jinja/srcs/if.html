@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+
+{% block title %}
+If
+{% endblock %}
+
+{% block body_title %}
+If
+{% endblock %}
+
+{% block contents %}
+{% if age >= 18 %}
+<h2>You are Major</h2>
+{% else %}
+<h2>You are Minor</h2>
+{% endif %}
+{% endblock %}

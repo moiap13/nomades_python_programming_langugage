@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FlaskWeek | {% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li>
+        <a href="/var/anto99">var</a>
+      </li>
+      <li>
+        <a href="/filter">filter</a>
+      </li>
+      <li>
+        <a href="/for">for</a>
+      </li>
+      <li>
+        <a href="/if">if</a>
+      </li>
+    </ul>
+  </nav>
+
+  <h1>{% block body_title%}{% endblock %}</h1>
+
+  {% block contents %}
+  {% endblock %}
+</body>
+
+</html>
