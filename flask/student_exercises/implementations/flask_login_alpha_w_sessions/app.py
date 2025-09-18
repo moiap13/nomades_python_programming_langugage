@@ -24,26 +24,14 @@ def index():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        firstname: str = request.form["tbx_firstname"]
-        lastname: str = request.form["tbx_lastname"]
-        email: str = request.form["tbx_email"]
-        password: str = request.form["tbx_password"]
-        password_confirmation: str = request.form["tbx_password_confirmation"]
+        # TODO: Get the data from form
+        firstname: str = ...
+        lastname: str = ...
+        email: str = ...
+        password: str = ...
+        password_confirmation: str = ...
 
-        if (
-            (
-                not (
-                    firstname
-                    and lastname
-                    and email
-                    and password
-                    and password_confirmation
-                )
-            )
-            or ("@" not in email)
-            or (password != password_confirmation)
-        ):
-            return "Please review the form"
+        # TODO: Validate the form
 
         # TODO: insert data in csv database, hash the password using a salt
         # TODO: BONUS: check if email is already in csv file
@@ -71,8 +59,10 @@ def login():
 
 
 # TODO: Add a new route for private part
-# This route should be available only when someone is logged in
-# Otw -> show message to login
+# This route should be available only when someone is logged in,
+# this page display the infomration for the connected user
+# (firstname, lastname, email)
+# Otw -> redirect to login
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
