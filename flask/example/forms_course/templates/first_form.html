@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+
+{% block title %}
+First form
+{% endblock %}
+
+{% block contents %}
+<h1>First Form</h1>
+
+<form action="/first_form" method="POST" enctype="multipart/form-data">
+  <input type="text" name="firstname" placeholder="firstname" required />
+  <input type="text" name="lastname" placeholder="lastname" required />
+  <input type="email" name="email" placeholder="email" required />
+  <input type="file" name="profile_picture" accept="image/jpeg,image/png" />
+  <input type="submit" value="Send Form" />
+</form>
+{% endblock %}
