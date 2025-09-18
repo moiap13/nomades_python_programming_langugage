@@ -1,12 +1,19 @@
 import os
 import csv
+import json
 
 from flask import Flask, render_template, request
 
-app = Flask(__name__)
 
 CURR_DIR: str = os.path.dirname(__file__)
 CSV_FILE: str = os.path.join(CURR_DIR, "users.csv")
+CONFIG_FILE: str = os.path.join(CURR_DIR, "configs", "config_creds.json")
+
+with open(CONFIG_FILE) as json_config:
+    config: dict[str, str] = json.load(json_config)
+
+app = Flask(__name__)
+app.config["SECRET_KEY"] = config["secret_key"]
 
 
 @app.route("/")
