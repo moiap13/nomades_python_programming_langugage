@@ -1,0 +1,43 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+Private
+{% endblock %}
+
+{% block contents %}
+<h1>Private</h1>
+<div class="row">
+  <div class="col-12 text-center">
+    <img class="rounded-circle" alt="user profile picture" src="{{ url_for('static', filename=pp_filename) }}"
+      width="200px" height="200px">
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col">
+    <div class="row">
+      <div class="col-6">
+        <h3 class="text-end">Firstname</h3>
+      </div>
+      <div class="col-6">
+        <p>{{ firstname }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h3 class="text-end">Lastname</h3>
+      </div>
+      <div class="col-6">
+        <p>{{ lastname }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h3 class="text-end">Email</h3>
+      </div>
+      <div class="col-6">
+        <p>{{ email }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

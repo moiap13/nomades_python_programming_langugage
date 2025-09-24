@@ -1,0 +1,42 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+register
+{% endblock %}
+
+
+{% block contents %}
+<div>
+  <h1>Register</h1>
+  <form action="{{ url_for('login.register') }}" method="post" enctype="multipart/form-data">
+    <!-- Change the action to use url_for -->
+    <div class="mb-3">
+      <label for="tbx_firstname" class="form-label">Firstname</label>
+      <input type="text" class="form-control" id="tbx_firstname" placeholder="Firstname" name="tbx_firstname" required>
+    </div>
+    <div class="mb-3">
+      <label for="tbx_lastname" class="form-label">Lastname</label>
+      <input type="text" class="form-control" id="tbx_lastname" placeholder="Lastname" name="tbx_lastname" required>
+    </div>
+    <div class="mb-3">
+      <label for="tbx_email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="tbx_email" placeholder="name@example.com" name="tbx_email" required>
+    </div>
+    <div class="mb-3">
+      <label for="pp_file" class="form-label">Profile Picture</label>
+      <input type="file" class="form-control" id="pp_file" name="pp_file" accept="image/jpeg, image/png" required>
+    </div>
+    <div class="mb-3">
+      <label for="tbx_password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="tbx_password" placeholder="Password" name="tbx_password" required>
+    </div>
+    <div class="mb-3">
+      <label for="tbx_password_confirmation" class="form-label">Password confirmation</label>
+      <input type="password" class="form-control" id="tbx_password_confirmation" placeholder="Password confirmation"
+        name="tbx_password_confirmation" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
+{% endblock %}
