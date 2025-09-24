@@ -18,6 +18,8 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from firebase_admin.firestore import DocumentReference, DocumentSnapshot
 
+from schema.user import User
+
 CURR_DIR: str = os.path.dirname(__file__)
 CONFIG_FILE: str = os.path.join(CURR_DIR, "configs", "config_creds.json")
 FIRESTORE_CREDS = os.path.join(CURR_DIR, "configs", "firestore-creds.json")
@@ -77,14 +79,9 @@ def register():
         h_pwd: str = hashlib.sha256((password + salt).encode("utf-8")).hexdigest()
 
         # insert data in firestore database, using the firestore automatic id generator
-        user_to_add: dict[str, str] = {
-            "firstname": firstname,
-            "lastname": lastname,
-            "email": email,
-            "password": h_pwd,
-            "salt": salt,
-        }
-        _, doc_ref = db.collection("users").add(user_to_add)
+
+        user_to_add: User = User("", firstname, lastname, email, h_pwd, salt)
+        _, doc_ref = db.collection("users").add(user_to_add.to_dict())
 
         session["loggedin"] = True
         session["uid"] = doc_ref.id
@@ -110,14 +107,16 @@ def login():
             return redirect(url_for("login"))
 
         assert len(users_snapshot) == 1, f"Many users matched email: {email}"
-        user_snapshot: DocumentSnapshot = users_snapshot[0]
-        user_data: dict[str, str] = user_snapshot.to_dict()
-        h_pwd: str = hashlib.sha256((password + user_data["salt"]).encode()).hexdigest()
+        user_dict: dict[str, str] = users_snapshot[0].to_dict()
+        user_dict["uid"] = users_snapshot[0].id
+        user: User = User.from_dict(user_dict)
+
+        h_pwd: str = hashlib.sha256((password + user.salt).encode()).hexdigest()
         # Check if password hashes match (don't forget to add the salt in the same way of the registration)
-        if user_data["password"] == h_pwd:
+        if user.password == h_pwd:
             # if login successful -> return "Login successful"
             session["loggedin"] = True
-            session["uid"] = user_snapshot.id
+            session["uid"] = user.uid
             flash("Login successfull", "success")
             return redirect(url_for("private"))
 
@@ -158,13 +157,13 @@ def private() -> str:
     user_snapshot: DocumentSnapshot = (
         db.collection("users").document(session["uid"]).get()
     )
-    user_data: dict[str, str] = user_snapshot.to_dict()
+    user: User = User.from_dict(user_snapshot.to_dict() | {"uid": user_snapshot.id})
 
     return render_template(
         "private.html",
-        firstname=user_data["firstname"],
-        lastname=user_data["lastname"],
-        email=user_data["email"],
+        firstname=user.firstname,
+        lastname=user.lastname,
+        email=user.email,
     )
 
 
