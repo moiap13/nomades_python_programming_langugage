@@ -1,0 +1,26 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+Articles | Show
+{% endblock %}
+
+{% block contents %}
+<h1>{{ list_title }}</h1>
+{# an article is title, body and author #}
+<div class="row">
+
+  {% for article in articles %}
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{# TODO: Display the article title #}</h5>
+        <p class="card-text">{# TODO: Display the article body #}</p>
+      </div>
+      <div class="card-footer">
+        {# TODO: Display the article author #}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
