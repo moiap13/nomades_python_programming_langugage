@@ -1,0 +1,10 @@
+flask
+WTForms==2.3.3
+firebase-admin
+email_validator
+google-genai
+pandas
+numpy
+matplotlib
+plotly
+

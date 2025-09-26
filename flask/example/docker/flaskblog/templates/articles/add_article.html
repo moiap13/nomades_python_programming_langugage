@@ -1,0 +1,32 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import display_field %}
+
+{% block title %}
+Articles | Add
+{% endblock %}
+
+{% block contents %}
+<h1>Add Article</h1>
+{# create the html form <form> to add a new article #}
+  {# The form should send using POST method to the /articles/add route #}
+  {# The form contains 1 input type text (StringField) for the title #}
+  {# The form contains 1 textarea (TeaxareaField) for the body #}
+  {# Finally, the form will contains the dubmit button #}
+
+  <div class="row">
+    <div class="col-12">
+      <form action="{{ url_for('articles.article_add') }}" method="post">
+        {{ display_field(form.title) }}
+
+        <div class="form-floating mb-3">
+          {{ form.body(class="form-control", style="height: 100px")}}
+          {{ form.body.label() }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Publish</button>
+      </form>
+    </div>
+  </div>
+
+
+  {% endblock %}

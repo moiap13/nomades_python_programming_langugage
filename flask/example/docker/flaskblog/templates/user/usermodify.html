@@ -1,0 +1,51 @@
+{% extends 'includes/_base.html' %}
+
+
+{% block title %}
+User Modify
+{% endblock %}
+
+{% block contents %}
+<h1>User Modification</h1>
+<div class="row">
+  <div class="col-12 text-center">
+    <img class="rounded-circle" alt="user profile picture" src="{{ pp_filename }}" width="200px" height="200px">
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col">
+    <!-- set the right action and method; the form should be sent to the route "/user/modify" -->
+    <form action="{{ url_for('user.usermodify') }}" method="POST">
+      <div class="row">
+        <div class="col-6">
+          <h3 class="text-end">Firstname</h3>
+        </div>
+        <div class="col-6">
+          <input type="text" name="tbx_firstname" class="form-control" value="{{ firstname }}" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <h3 class="text-end">Lastname</h3>
+        </div>
+        <div class="col-6">
+          <input type="text" name="tbx_lastname" class="form-control" value="{{ lastname }}" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <h3 class="text-end">Email</h3>
+        </div>
+        <div class="col-6">
+          <input type="text" name="tbx_email" class="form-control" value="{{ email }}" required>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-primary">Modify user</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
