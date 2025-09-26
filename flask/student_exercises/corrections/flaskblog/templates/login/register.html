@@ -1,0 +1,24 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import display_field %}
+
+{% block title %}
+register
+{% endblock %}
+
+
+{% block contents %}
+<div>
+  <h1>Register</h1>
+  <form action="{{ url_for('login.register') }}" method="post" enctype="multipart/form-data">
+    <!-- Change the action to use url_for -->
+    {{ display_field(form.firstname, placeholder="Firstname") }}
+    {{ display_field(form.lastname, placeholder="Lastname") }}
+    {{ display_field(form.email, placeholder="Email") }}
+    {{ display_field(form.pp) }}
+    {{ display_field(form.pwd, placeholder="Passsword") }}
+    {{ display_field(form.pwd_confirmation, placeholder="Confirm password") }}
+
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
+{% endblock %}
