@@ -58,7 +58,20 @@ def fibonacci(n: int) -> int:
     :param n: The index of the Fibonacci number to compute
     :return: The nth Fibonacci number
     """
-    return None
+    # if n == 0 or n == 1:
+    #     return n
+
+    # a = 0
+    # b = 1
+
+    # for _ in range(2, n + 1):
+    #     b = a + b
+    #     a = b - a
+    # return b
+
+    if n == 0 or n == 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
 
 
 def sum(n: int) -> int:

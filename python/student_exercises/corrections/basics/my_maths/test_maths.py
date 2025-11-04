@@ -20,16 +20,16 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(factorial(7), 5040)
         self.assertEqual(factorial(25), 15511210043330985984000000)
 
-    # def test_fibonacci(self):
-    #     self.assertEqual(fibonacci(0), 0)
-    #     self.assertEqual(fibonacci(1), 1)
-    #     self.assertEqual(fibonacci(2), 1)
-    #     self.assertEqual(fibonacci(3), 2)
-    #     self.assertEqual(fibonacci(4), 3)
-    #     self.assertEqual(fibonacci(5), 5)
-    #     self.assertEqual(fibonacci(6), 8)
-    #     self.assertEqual(fibonacci(7), 13)
-    #     self.assertEqual(fibonacci(25), 75025)
+    def test_fibonacci(self):
+        self.assertEqual(fibonacci(0), 0)
+        self.assertEqual(fibonacci(1), 1)
+        self.assertEqual(fibonacci(2), 1)
+        self.assertEqual(fibonacci(3), 2)
+        self.assertEqual(fibonacci(4), 3)
+        self.assertEqual(fibonacci(5), 5)
+        self.assertEqual(fibonacci(6), 8)
+        self.assertEqual(fibonacci(7), 13)
+        self.assertEqual(fibonacci(25), 75025)
 
     def test_sum(self):
         self.assertEqual(sum(0), 0)
