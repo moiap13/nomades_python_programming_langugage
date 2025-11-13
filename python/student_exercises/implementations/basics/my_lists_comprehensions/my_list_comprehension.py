@@ -5,7 +5,7 @@ def generate_numbers():
     Returns:
         list: List of numbers from 1 to 10.
     """
-    return None
+    return [i for i in range(1, 11)]
 
 # Example: generate_numbers() -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -17,7 +17,7 @@ def generate_squares():
     Returns:
         list: List of squares of numbers from 1 to 10.
     """
-    return None
+    return [i**2 for i in range(1, 11)]
 
 # Example: generate_squares() -> [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 
@@ -29,7 +29,7 @@ def generate_even_numbers():
     Returns:
         list: List of even numbers from 1 to 20.
     """
-    return None
+    return [i*2 for i in range(1, 11)]
 
 # Example: generate_even_numbers() -> [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
@@ -41,7 +41,7 @@ def generate_odd_numbers():
     Returns:
         list: List of odd numbers from 1 to 20.
     """
-    return None
+    return [i for i in range(1, 20, 2)]
 
 # Example: generate_odd_numbers() -> [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 
@@ -53,7 +53,9 @@ def generate_uppercase_letters():
     Returns:
         list: List of uppercase letters from 'A' to 'Z'.
     """
-    return None
+    # ord('A') = 65, ord('Z') = 90 which are the ASCII values of 'A' and 'Z'
+
+    return [chr(i) for i in range(ord('A'), ord('Z') + 1)]
 
 # Example: generate_uppercase_letters() -> ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
@@ -65,7 +67,8 @@ def generate_lowercase_letters():
     Returns:
         list: List of lowercase letters from 'a' to 'z'.
     """
-    return None
+    # ord('a') = 97, ord('z') = 122 which are the ASCII values of 'a' and 'z'
+    return [chr(i) for i in range(ord('a'), ord('z') + 1)]
 
 # Example: generate_lowercase_letters() -> ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
@@ -77,7 +80,7 @@ def generate_squared_even_numbers():
     Returns:
         list: List of squared even numbers from 1 to 20.
     """
-    return None
+    return [i**2 for i in range(1, 21) if i % 2 == 0]
 
 # Example: generate_squared_even_numbers() -> [4, 16, 36, 64, 100, 144, 196, 256, 324, 400]
 
@@ -89,7 +92,7 @@ def generate_number_squares():
     Returns:
         list: List of tuples containing numbers and their squares.
     """
-    return None
+    return [(i, i**2) for i in range(1, 11)]
 
 # Example: generate_number_squares() -> [(1, 1), (2, 4), (3, 9), (4, 16), (5, 25), (6, 36), (7, 49), (8, 64), (9, 81), (10, 100)]
 
@@ -104,7 +107,7 @@ def capitalize_words(sentence):
     Returns:
         list: List of words with the first letter capitalized.
     """
-    return None
+    return [word.capitalize() for word in sentence.split()]
 
 # Example: capitalize_words("hello world, how are you?") -> ['Hello', 'World,', 'How', 'Are', 'You?']
 
@@ -116,7 +119,11 @@ def generate_prime_numbers():
     Returns:
         list: List of prime numbers from 1 to 50.
     """
-    return None
+    return [
+        i for i in range(2, 51) 
+        if all(i % j != 0 
+               for j in range(2, int(i**0.5) + 1))
+        ]
 
 # Example: generate_prime_numbers() -> [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 
@@ -128,7 +135,7 @@ def generate_divisible_by_3_or_5():
     Returns:
         list: List of numbers divisible by 3 or 5 from 1 to 50.
     """
-    return None
+    return [i for i in range(1, 51) if i % 3 == 0 or i % 5 == 0]
 
 # Example: generate_divisible_by_3_or_5() -> [3, 5, 6, 9, 10, 12, 15, 18, 20, 21, 24, 25, 27, 30, 33, 35, 36, 39, 40, 42, 45, 48, 50]
 
@@ -140,7 +147,7 @@ def generate_even_squares_odd_cubes():
     Returns:
         list: List of even squares and odd cubes from 1 to 10.
     """
-    return None
+    return [i**2 if i % 2 == 0 else i**3 for i in range(1, 11)]
 
 # Example: generate_even_squares_odd_cubes() -> [1, 4, 27, 16, 125, 36, 343, 64, 729, 100]
 
@@ -155,7 +162,7 @@ def generate_word_lengths(sentence):
     Returns:
         list: List of word lengths.
     """
-    return None
+    return [len(word) for word in sentence.split()]
 
 # Example: generate_word_lengths("This is a sample sentence") -> [4, 2, 1, 6, 8]
 
@@ -167,7 +174,7 @@ def generate_numbers_excluding_multiples_of_3():
     Returns:
         list: List of numbers from 1 to 10, excluding multiples of 3.
     """
-    return None
+    return [i for i in range(1, 11) if i % 3 != 0]
 
 # Example: generate_numbers_excluding_multiples_of_3() -> [1, 2, 4, 5, 7, 8, 10]
 
@@ -179,7 +186,7 @@ def generate_squares_of_even_numbers():
     Returns:
         list: List of squares of even numbers from 1 to 10.
     """
-    return None
+    return [i**2 for i in range(1, 11) if i % 2 == 0]
 
 # Example: generate_squares_of_even_numbers() -> [4, 16, 36, 64, 100]
 
@@ -194,7 +201,7 @@ def generate_vowels(word):
     Returns:
         list: List of vowels present in the word.
     """
-    return None
+    return [char for char in word if char.lower() in 'aeiou']
 
 # Example: generate_vowels("hello") -> ['e', 'o']
 
@@ -206,7 +213,14 @@ def generate_numbers_repeated():
     Returns:
         list: List of numbers from 1 to 10 repeated twice.
     """
-    return None
+    # list = []
+
+    # for i in range(1, 11):
+    #     for _ in range(2):
+    #         list.append(i)
+    # return list
+
+    return [i for i in range(1, 11) for _ in range(2)]
 
 # Example: generate_numbers_repeated() -> [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10]
 
@@ -218,7 +232,7 @@ def generate_squares_excluding_multiples_of_3():
     Returns:
         list: List of squares of numbers from 1 to 10, excluding squares divisible by 3.
     """
-    return None
+    return [i**2 for i in range(1, 11) if (i**2) % 3 != 0]
 
 # Example: generate_squares_excluding_multiples_of_3() -> [1, 4, 16, 25, 49, 64, 100]
 
@@ -234,7 +248,7 @@ def generate_uppercase_consonants(string):
         list: List of uppercase consonants from the string.
     """
     import string as str
-    return None
+    return [char.upper() for char in string if char.isalpha() and char.upper() not in 'AEIOU']
 
 # Example: generate_uppercase_consonants("Hello, World!") -> ['H', 'L', 'L', 'W', 'R', 'L', 'D']
 
@@ -250,7 +264,7 @@ def generate_even_numbers_in_range(start, end):
     Returns:
         list: List of even numbers between the given range (inclusive).
     """
-    return None
+    return [i for i in range(start, end + 1) if i % 2 == 0]
 
 # Example: generate_even_numbers_in_range(5, 15) -> [6, 8, 10, 12, 14]
 

@@ -5,7 +5,7 @@ def create_empty_dictionary() -> Dict[Any, Any]:
     Function to create an empty dictionary.
     :return: An empty dictionary.
     """
-    return None
+    return {}
 
 
 def add_key_value(dictionary: Dict[Any, Any], key: Any, value: Any) -> None:
@@ -16,6 +16,8 @@ def add_key_value(dictionary: Dict[Any, Any], key: Any, value: Any) -> None:
     :param value: The value associated with the key.
     :return: None.
     """
+
+    dictionary[key] = value
     pass
 
 
@@ -26,7 +28,7 @@ def get_value(dictionary: Dict[Any, Any], key: Any) -> Any:
     :param key: The key to look for.
     :return: The value associated with the key.
     """
-    return None
+    return dictionary.get(key, None)
 
 
 def check_key(dictionary: Dict[Any, Any], key: Any) -> bool:
@@ -36,7 +38,7 @@ def check_key(dictionary: Dict[Any, Any], key: Any) -> bool:
     :param key: The key to look for.
     :return: True if the key exists, False otherwise.
     """
-    return None
+    return key in dictionary
 
 
 def remove_key_value(dictionary: Dict[Any, Any], key: Any) -> None:
@@ -46,6 +48,7 @@ def remove_key_value(dictionary: Dict[Any, Any], key: Any) -> None:
     :param key: The key to remove.
     :return: None.
     """
+    del dictionary[key]
     pass
 
 
@@ -55,7 +58,7 @@ def count_key_value_pairs(dictionary: Dict[Any, Any]) -> int:
     :param dictionary: The dictionary to count.
     :return: The number of key-value pairs.
     """
-    return None
+    return len(dictionary)
 
 
 def get_keys(dictionary: Dict[Any, Any]) -> list:
@@ -64,7 +67,7 @@ def get_keys(dictionary: Dict[Any, Any]) -> list:
     :param dictionary: The dictionary to extract keys from.
     :return: A list of keys.
     """
-    return None
+    return list(dictionary.keys())
 
 
 def get_values(dictionary: Dict[Any, Any]) -> list:
@@ -73,7 +76,7 @@ def get_values(dictionary: Dict[Any, Any]) -> list:
     :param dictionary: The dictionary to extract values from.
     :return: A list of values.
     """
-    return None
+    return list(dictionary.values())
 
 
 def get_items(dictionary: Dict[Any, Any]) -> list:
@@ -82,7 +85,7 @@ def get_items(dictionary: Dict[Any, Any]) -> list:
     :param dictionary: The dictionary to extract items from.
     :return: A list of tuples representing key-value pairs.
     """
-    return None
+    return list(dictionary.items())
 
 
 def update_values(dictionary: Dict[Any, Any], key: Any, value: Any) -> None:
@@ -93,6 +96,7 @@ def update_values(dictionary: Dict[Any, Any], key: Any, value: Any) -> None:
     :param value: The new value to set for the key.
     :return: None.
     """
+    dictionary[key] = value
     pass
 
 
@@ -103,7 +107,13 @@ def merge_dictionaries(dictionary1: Dict[Any, Any], dictionary2: Dict[Any, Any])
     :param dictionary2: The second dictionary.
     :return: A new dictionary containing the merged key-value pairs.
     """
-    return None
+
+    new_dictionary = dictionary1.copy()
+    for key, value in dictionary2.items():
+        new_dictionary[key] = value
+    return new_dictionary
+    
+    #return {**dictionary1, **dictionary2} # Alternative way to merge dictionaries
 
 
 def clear_dictionary(dictionary: Dict[Any, Any]) -> None:
@@ -112,6 +122,7 @@ def clear_dictionary(dictionary: Dict[Any, Any]) -> None:
     :param dictionary: The dictionary to clear.
     :return: None.
     """
+    dictionary.clear()
     pass
 
 
@@ -121,7 +132,7 @@ def find_key_with_max_value(dictionary: Dict[Any, Any]) -> Any:
     :param dictionary: The dictionary to search.
     :return: The key with the maximum value.
     """
-    return None
+    return max(dictionary, key=dictionary.get) 
 
 
 def find_key_with_min_value(dictionary: Dict[Any, Any]) -> Any:
@@ -130,7 +141,7 @@ def find_key_with_min_value(dictionary: Dict[Any, Any]) -> Any:
     :param dictionary: The dictionary to search.
     :return: The key with the minimum value.
     """
-    return None
+    return min(dictionary, key=dictionary.get)
 
 
 def check_same_key_value_pairs(dictionary1: Dict[Any, Any], dictionary2: Dict[Any, Any]) -> bool:
@@ -140,4 +151,4 @@ def check_same_key_value_pairs(dictionary1: Dict[Any, Any], dictionary2: Dict[An
     :param dictionary2: The second dictionary.
     :return: True if both dictionaries have the same key-value pairs, False otherwise.
     """
-    return None
+    return dictionary1 == dictionary2

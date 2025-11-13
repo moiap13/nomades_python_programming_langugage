@@ -4,7 +4,7 @@ def get_first_three_elements(lst: list) -> list:
     :param lst: The input list.
     :return: A list containing the first three elements.
     """
-    return None
+    return lst[:3]
 
 
 def get_last_two_elements(lst: list) -> list:
@@ -13,7 +13,7 @@ def get_last_two_elements(lst: list) -> list:
     :param lst: The input list.
     :return: A list containing the last two elements.
     """
-    return None
+    return lst[-2:]
 
 
 def reverse_list(lst: list) -> list:
@@ -22,7 +22,7 @@ def reverse_list(lst: list) -> list:
     :param lst: The input list.
     :return: The reversed list.
     """
-    return None
+    return lst[::-1]
 
 
 def get_even_index_elements(lst: list) -> list:
@@ -31,7 +31,7 @@ def get_even_index_elements(lst: list) -> list:
     :param lst: The input list.
     :return: A list of elements at even indices.
     """
-    return None
+    return lst[::2]
 
 
 def get_odd_index_elements(lst: list) -> list:
@@ -40,7 +40,7 @@ def get_odd_index_elements(lst: list) -> list:
     :param lst: The input list.
     :return: A list of elements at odd indices.
     """
-    return None
+    return lst[1::2]
 
 
 def remove_duplicates(lst: list) -> list:
@@ -49,7 +49,7 @@ def remove_duplicates(lst: list) -> list:
     :param lst: The input list.
     :return: A list with duplicates removed.
     """
-    return None
+    return list(set(lst))
 
 
 def square_elements(lst: list) -> list:
@@ -58,7 +58,7 @@ def square_elements(lst: list) -> list:
     :param lst: The input list.
     :return: A list with squared elements.
     """
-    return None
+    return list(map(lambda x: x**2, lst))
 
 
 def double_elements(lst: list) -> list:
@@ -67,7 +67,7 @@ def double_elements(lst: list) -> list:
     :param lst: The input list.
     :return: A list with doubled elements.
     """
-    return None
+    return list(map(lambda x: x*2, lst))
 
 
 def sum_of_elements(lst: list) -> int:
@@ -76,7 +76,7 @@ def sum_of_elements(lst: list) -> int:
     :param lst: The input list.
     :return: The sum of the elements.
     """
-    return None
+    return sum(lst)
 
 
 def is_sorted(lst: list) -> bool:
@@ -85,7 +85,7 @@ def is_sorted(lst: list) -> bool:
     :param lst: The input list.
     :return: True if the list is sorted, False otherwise.
     """
-    return None
+    return lst == sorted(lst)
 
 
 def count_occurrences(lst: list, element) -> int:
@@ -95,7 +95,7 @@ def count_occurrences(lst: list, element) -> int:
     :param element: The element to count.
     :return: The number of occurrences of the element.
     """
-    return None
+    return lst.count(element)
 
 
 def find_maximum(lst: list) -> int:
@@ -104,7 +104,9 @@ def find_maximum(lst: list) -> int:
     :param lst: The input list.
     :return: The maximum element in the list.
     """
-    return None
+    if not lst:
+        return None
+    return max(lst)
 
 
 def find_minimum(lst: list) -> int:
@@ -113,7 +115,9 @@ def find_minimum(lst: list) -> int:
     :param lst: The input list.
     :return: The minimum element in the list.
     """
-    return None
+    if not lst:
+        return None
+    return min(lst)
 
 
 def combine_lists(lst1: list, lst2: list) -> list:
@@ -123,7 +127,8 @@ def combine_lists(lst1: list, lst2: list) -> list:
     :param lst2: The second list.
     :return: A list containing elements from both lists.
     """
-    return None
+    lst1.extend(lst2)
+    return lst1
 
 
 def is_palindrome(lst: list) -> bool:
@@ -133,10 +138,11 @@ def is_palindrome(lst: list) -> bool:
     :param lst: The input list.
     :return: True if the list is a palindrome, False otherwise.
     """
-    return None
+    return lst == reverse_list(lst)
+    # return lst == lst[::-1]
 
-def combine_lists(lst1, lst2):
-    return None
+# def combine_lists(lst1, lst2):
+#     return lst1 + lst2
 
-def is_palindrome(lst):
-    return None
+# def is_palindrome(lst):
+#     return lst == lst[::-1]

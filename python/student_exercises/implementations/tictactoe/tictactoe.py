@@ -5,7 +5,7 @@ import random
 def draw_board(board):
     """
     Function to draw the tic-tac-toe board.
-
+§
     Arguments:
     - board (list): List representing the tic-tac-toe board.
     """

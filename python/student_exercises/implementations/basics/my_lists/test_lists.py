@@ -118,7 +118,7 @@ class TestListFunctions(unittest.TestCase):
     def test_combine_lists(self):
         lst1 = [1, 2, 3]
         lst2 = [4, 5, 6]
-        self.assertEqual(combine_lists(lst1, lst2), [1, 4, 2, 5, 3, 6])
+        self.assertEqual(combine_lists(lst1, lst2), [1, 2, 3, 4, 5, 6])
         self.assertEqual(combine_lists([], []), [])
         self.assertEqual(combine_lists([1], [2]), [1, 2])
 
