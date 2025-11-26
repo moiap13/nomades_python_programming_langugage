@@ -1,0 +1,23 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block contents %}
+<h1>Login</h1>
+<form action="/login" method="post">
+  <div class="mb-3">
+    <label for="tbx_email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="tbx_email" name="tbx_email" aria-describedby="emailHelp"
+      placeholder="Enter your email address" required>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="tbx_pwd" class="form-label">Password</label>
+    <input type="password" class="form-control" id="tbx_pwd" name="tbx_pwd" placeholder="Enter your password" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+<small>you don't have an account regster <a href="/register">here</a></small>
+{% endblock %}
