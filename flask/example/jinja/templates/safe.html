@@ -1,0 +1,8 @@
+{% extends '_base.html' %}
+
+{% block title %}Variables{% endblock %}
+
+{% block content %}
+<h1>Safe</h1>
+{{safe_html | safe}}
+{% endblock %}
