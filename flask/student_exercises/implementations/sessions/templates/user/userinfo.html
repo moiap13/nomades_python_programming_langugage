@@ -1,0 +1,55 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+User Info
+{% endblock %}
+
+{% block contents %}
+<h1>User Info</h1>
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-6">
+        <h5>firstname</h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["firstname"] }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h5>Lastname</h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["lastname"] }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h5>Username</h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["uid"] }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h5>
+          Email
+        </h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["email"] }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h5>Age</h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["age"] }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
