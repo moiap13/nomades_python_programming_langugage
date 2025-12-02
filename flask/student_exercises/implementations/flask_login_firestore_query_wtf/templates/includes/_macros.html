@@ -1,0 +1,13 @@
+{% macro displayField(formField) %}
+<div class="mb-3">
+  {{ formField.label(class="form-label") }}
+  {{ formField(class="form-control", **kwargs) }}
+  {% if formField.errors %}
+  {% for error in formField.errors %}
+  <div class="alert alert-danger mt-1" role="alert">
+    {{ error }}
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>
+{% endmacro %}
