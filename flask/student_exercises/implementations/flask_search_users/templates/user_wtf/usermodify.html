@@ -1,0 +1,100 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import displayField %}
+
+{% block title %}
+User Modify
+{% endblock %}
+
+{% block contents %}
+<h1>User Modify</h1>
+<form method="post" action="{{ url_for('user.user_modify') }}" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>firstname</h5>
+        </div>
+        <div class="col-6">
+          {{ displayField(form.firstname, displayLabel=False) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Lastname</h5>
+        </div>
+        <div class="col-6">
+          {{ displayField(form.lastname, displayLabel=False) }}
+        </div>
+      </div>
+      <div class=" row">
+        <div class="col-6 text-end">
+          <h5>Username</h5>
+        </div>
+        <div class="col-6">
+          {{ displayField(form.uid, displayLabel=False) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>
+            Email
+          </h5>
+        </div>
+        <div class="col-6">
+          {{ displayField(form.email, displayLabel=False) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Age</h5>
+        </div>
+        <div class="col-6">
+          {{ displayField(form.age, displayLabel=False) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Profile picture</h5>
+        </div>
+        <div class="col-6">
+          {{ displayField(form.pp, accept="image/*", displayLabel=False) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Old password</h5>
+        </div>
+        <div class="col-6">
+          {{ displayField(form.old_pwd, displayLabel=False) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>New password</h5>
+        </div>
+        <div class="col-6">
+          {{ displayField(form.new_pwd, displayLabel=False) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Repeat new password</h5>
+        </div>
+        <div class="col-6">
+          {{ displayField(form.new_pwd_2, displayLabel=False) }}
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary w-100">Modify user data</button>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <a href="{{ url_for('user.user_info') }}" class="btn btn-danger w-100">Cancel</a>
+        </div>
+      </div>
+    </div>
+</form>
+</div>
+{% endblock %}
