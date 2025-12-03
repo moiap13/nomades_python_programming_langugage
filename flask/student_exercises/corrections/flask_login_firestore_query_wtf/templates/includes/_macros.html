@@ -1,6 +1,8 @@
-{% macro displayField(formField) %}
+{% macro displayField(formField, displayLabel=True) %}
 <div class="mb-3">
+  {% if displayLabel %}
   {{ formField.label(class="form-label") }}
+  {% endif %}
   {{ formField(class="form-control", **kwargs) }}
   {% if formField.errors %}
   {% for error in formField.errors %}

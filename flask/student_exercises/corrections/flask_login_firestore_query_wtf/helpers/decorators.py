@@ -8,7 +8,7 @@ def authenticated(func):
     def inner_func(*args, **kwargs):
         if not ("loggedin" in session and session["loggedin"] == True):
             flash("Please login first !", "warning")
-            return redirect(url_for("login"))
+            return redirect(url_for("login.login"))
 
         return func(*args, **kwargs)
 

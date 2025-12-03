@@ -11,7 +11,7 @@ from wtforms.validators import DataRequired, Length, Email, NumberRange, EqualTo
 from .custom_validators import image_type, validate_password
 
 
-class RegisterForm(Form):
+class UserModifyForm(Form):
     uid = StringField("Username", validators=[DataRequired(), Length(min=5)])
     firstname = StringField("Firstname", validators=[DataRequired(), Length(min=2)])
     lastname = StringField("Lastname", validators=[DataRequired(), Length(min=2)])
@@ -19,14 +19,17 @@ class RegisterForm(Form):
     age = IntegerField(
         "Age", validators=[DataRequired(), NumberRange(min=13, message="13 <= number")]
     )
-    pp = FileField("Profile picture", validators=[image_type])
-    pwd = PasswordField("Password", validators=[DataRequired(), validate_password])
-    pwd2 = PasswordField(
-        "Repeat password",
-        validators=[DataRequired(), EqualTo("pwd", "Password mismatch")],
+    pp = FileField(
+        "Profile picture",
+        validators=[image_type],
+        render_kw={"accept": "image/jpg, image/jpeg, image/png"},
     )
-
-
-class LoginForm(Form):
-    uid = StringField("Username or Email", validators=[DataRequired(), Length(min=5)])
-    pwd = PasswordField("Password", validators=[DataRequired()])
+    old_pwd = PasswordField("Old password")
+    new_pwd = PasswordField(
+        "New password",
+        validators=[validate_password],
+    )
+    new_pwd_2 = PasswordField(
+        "Repeat new ypassword",
+        validators=[EqualTo("new_pwd", "Password mismatch")],
+    )
