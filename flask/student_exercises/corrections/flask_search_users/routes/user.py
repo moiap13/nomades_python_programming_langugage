@@ -17,6 +17,8 @@ from helpers.firestore_funcs import get_user_by_uid, get_user_by_email
 from helpers.password_generator import generate_password as generate_salt
 from helpers.files import generate_pp_filename
 
+from models.user import User
+
 from forms.user import UserModifyForm
 
 UPLOAD_DIR: str = os.path.join(ROOT_DIR, "static", "uploads")
@@ -32,18 +34,11 @@ def user_info() -> str:
     # except UserNotFoundError:
     #     flash("User not found", "danger")
     #     return redirect("logout")
-    user: dict[str, str | int] = (
+    user_data: dict[str, str | int] = (
         db.collection("users").document(session["firestore_id"]).get().to_dict()
     )
-    img_path = url_for(
-        "static", filename=os.path.join("uploads", user.get("pp_filename", "UNKNOWN"))
-    )
-    user["pp_filename"] = (
-        img_path
-        if os.path.isfile(os.path.join(UPLOAD_DIR, user.get("pp_filename", "UNKNOWN")))
-        else f"https://ui-avatars.com/api/?name={user["firstname"]}+{user["lastname"]}&background=random"
-    )
-
+    user: User = User.from_dict(user_data)
+    user.firestore_id = session["firestore_id"]
     return render_template("user_wtf/userinfo.html", user=user, allow_modify=True)
 
 
@@ -134,20 +129,20 @@ def user_modify():
             pp.save(os.path.join(UPLOAD_DIR, pp_filename))
 
         user_doc_ref.update(
-            {
-                "firstname": firstname,
-                "lastname": lastname,
-                "uid": uid,
-                "email": email,
-                "age": age,
-                "pwd": h_new_pwd if h_new_pwd != "" else user["pwd"],
-                "salt": new_salt if new_salt else user["salt"],
-                "pp_filename": (
+            User(
+                uid=uid,
+                firstname=firstname,
+                lastname=lastname,
+                email=email,
+                age=age,
+                pp=(
                     pp_filename
                     if pp
                     else (user["pp_filename"] if user.get("pp_filename") else "")
                 ),
-            }
+                pwd=h_new_pwd if h_new_pwd != "" else user["pwd"],
+                salt=new_salt if new_salt else user["salt"],
+            ).to_dict(include_id=False)
         )
 
         flash("User updated successfully", "success")

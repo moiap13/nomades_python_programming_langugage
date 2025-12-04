@@ -16,7 +16,7 @@ User Info
   <div class="col-12">
     <div class="row mb-4">
       <div class="col-12 text-center">
-        <img width="200px" alt="user profile picture" src="{{user.pp_filename}}" class="rounded">
+        <img width="200px" alt="user profile picture" src="{{user.get_pp_path()}}" class="rounded">
       </div>
     </div>
     <div class="row">
@@ -24,7 +24,7 @@ User Info
         <h5>firstname</h5>
       </div>
       <div class="col-6">
-        <p>{{ user["firstname"] }}</p>
+        <p>{{ user.firstname }}</p>
       </div>
     </div>
     <div class="row">
@@ -32,7 +32,7 @@ User Info
         <h5>Lastname</h5>
       </div>
       <div class="col-6">
-        <p>{{ user["lastname"] }}</p>
+        <p>{{ user.lastname }}</p>
       </div>
     </div>
     <div class="row">
@@ -40,7 +40,7 @@ User Info
         <h5>Username</h5>
       </div>
       <div class="col-6">
-        <p>{{ user["uid"] }}</p>
+        <p>{{ user.uid }}</p>
       </div>
     </div>
     <div class="row">
@@ -50,7 +50,7 @@ User Info
         </h5>
       </div>
       <div class="col-6">
-        <p>{{ user["email"] }}</p>
+        <p>{{ user.email }}</p>
       </div>
     </div>
     <div class="row">
@@ -58,7 +58,7 @@ User Info
         <h5>Age</h5>
       </div>
       <div class="col-6">
-        <p>{{ user["age"] }}</p>
+        <p>{{ user.age }}</p>
       </div>
     </div>
     {% if allow_modify %}

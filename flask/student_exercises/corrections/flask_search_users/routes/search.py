@@ -14,6 +14,8 @@ from flask import Blueprint, request, render_template
 
 from config.firestore_connection import db
 
+from models.user import User
+
 from helpers.errors import UserNotFoundError
 from helpers.firestore_funcs import (
     get_user_by_uid,
@@ -31,22 +33,27 @@ def search() -> str:
         search_term: str = request.form.get("tbx_search", "")
 
         try:
-            uid_user: dict = get_user_by_uid(search_term, db)
+            uid_user: User = get_user_by_uid(search_term, db)
         except UserNotFoundError:
             uid_user = None
 
         try:
-            email_user: dict = get_user_by_email(search_term, db)
+            email_user: User = get_user_by_email(search_term, db)
         except UserNotFoundError:
             email_user = None
 
-        firstname_users: list[dict] = get_users_by_firstname(search_term, db)
-        lastname_users: list[dict] = get_users_by_lastname(search_term, db)
+        firstname_users: list[User] = get_users_by_firstname(search_term, db)
+        lastname_users: list[User] = get_users_by_lastname(search_term, db)
 
-        result_users: list[dict] = (
+        result_users: list[User] = (
             [uid_user, email_user] + firstname_users + lastname_users
         )
+        result_non_empty: list[User] = [user for user in result_users if user != None]
 
-        return render_template(
-            "search/search.html", users=[user for user in result_users if user != None]
-        )
+        unique_results: list[User] = []
+        for user in result_non_empty:
+            if user in unique_results:
+                continue
+            unique_results.append(user)
+
+        return render_template("search/search.html", users=unique_results)

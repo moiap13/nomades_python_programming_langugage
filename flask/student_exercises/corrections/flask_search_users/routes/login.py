@@ -16,6 +16,8 @@ from helpers.files import generate_pp_filename
 from helpers.firestore_funcs import get_user_by_uid, get_user_by_email
 from helpers.password_generator import generate_password as generate_salt
 
+from models.user import User
+
 from forms.login import RegisterForm, LoginForm
 
 UPLOAD_DIR: str = os.path.join(ROOT_DIR, "static", "uploads")
@@ -70,16 +72,16 @@ def register():
         salt: str = generate_salt(True, False, False, False, 10)
         h_pwd: str = sha256((pwd + salt).encode()).hexdigest()
         _, doc_ref = db.collection("users").add(
-            {
-                "firstname": firstname,
-                "lastname": lastname,
-                "uid": uid,
-                "email": email,
-                "age": age,
-                "salt": salt,
-                "pwd": h_pwd,
-                "pp_filename": pp_filename if pp else "",
-            }
+            User(
+                uid=uid,
+                pwd=h_pwd,
+                salt=salt,
+                firstname=firstname,
+                lastname=lastname,
+                email=email,
+                age=age,
+                pp=pp_filename if pp else "",
+            ).to_dict(include_id=False)
         )
 
         session["loggedin"] = True

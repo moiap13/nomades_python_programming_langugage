@@ -1,13 +1,20 @@
+import sys
+import os
+
+CURR_DIR: str = os.path.dirname(__file__)
+ROOT_DIR: str = os.path.dirname(CURR_DIR)
+sys.path.append(ROOT_DIR)
+
 from firebase_admin.firestore import DocumentReference, DocumentSnapshot
 from firebase_admin.firestore import client
 
-
 from .errors import UserNotFoundError
+from models.user import User
 
 
 def get_user_by_uid(
     uid: str, firestore_connector: client, users_collection="users"
-) -> dict[str, str | int]:
+) -> User:
     """
     Get a user by their uid
 
@@ -37,12 +44,14 @@ def get_user_by_uid(
     # user_data.update({"id": users[0].id})
     # return user_data
 
-    return users[0].to_dict() | {"id": users[0].id}
+    user: User = User.from_dict(users[0].to_dict())
+    user.firestore_id = users[0].id
+    return user
 
 
 def get_user_by_email(
     email: str, firestore_connector: client, users_collection="users"
-) -> dict[str, str | int]:
+) -> User:
     """
     Get a user by their email
 
@@ -70,26 +79,26 @@ def get_user_by_email(
 
     assert len(users) == 1, f"Many users with email={email}"
 
-    return users[0].to_dict() | {"id": users[0].id}
+    return User.from_dict(users[0].to_dict() | {"id": users[0].id})
 
 
 def get_users_by_firstname(
     firstname: str, firestore_connector: client, users_collection="users"
-) -> list[dict[str, int | str | dict[str, str]]]:
+) -> list[User]:
     users: list[DocumentSnapshot] = (
         firestore_connector.collection(users_collection)
         .where("firstname", "==", firstname)
         .get()
     )
-    return [user.to_dict() | {"id": user.id} for user in users]
+    return [User.from_dict(user.to_dict() | {"id": user.id}) for user in users]
 
 
 def get_users_by_lastname(
     lastname: str, firestore_connector: client, users_collection="users"
-) -> list[dict[str, int | str | dict[str, str]]]:
+) -> list[User]:
     users: list[DocumentSnapshot] = (
         firestore_connector.collection(users_collection)
         .where("lastname", "==", lastname)
         .get()
     )
-    return [user.to_dict() | {"id": user.id} for user in users]
+    return [User.from_dict(user.to_dict() | {"id": user.id}) for user in users]
