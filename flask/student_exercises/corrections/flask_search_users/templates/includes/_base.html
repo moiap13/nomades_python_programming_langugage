@@ -54,8 +54,8 @@
             </li>
             {% endif %}
           </ul>
-          <!-- TODO: add the action and method attributes for form-->
-          <!-- TODO: the form should be sent using post method at /search route -->
+          <!-- add the action and method attributes for form-->
+          <!-- the form should be sent using post method at /search route -->
           <form class="d-flex" role="search" action="{{ url_for('search.search') }}" method="post">
             <input name="tbx_search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">Search</button>

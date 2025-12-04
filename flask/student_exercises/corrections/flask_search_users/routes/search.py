@@ -1,8 +1,8 @@
-# TODO: Create a Blueprint for handling search route
-# TODO: The search route accepts GET and POST methods
-# TODO: Get -> returns the search page
-# TODO: POST -> Do the search on uid, email, firstname, lastname /!\ firestore don't do substring search
-# TODO: /!\ a person can be found multiple times
+# Create a Blueprint for handling search route
+# The search route accepts GET and POST methods
+# Get -> returns the search page
+# POST -> Do the search on uid, email, firstname, lastname /!\ firestore don't do substring search
+# /!\ a person can be found multiple times
 import sys
 import os
 
