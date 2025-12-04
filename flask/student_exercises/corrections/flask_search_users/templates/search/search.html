@@ -1,0 +1,35 @@
+<!-- TODO: create the serach page result -->
+<!-- TODO: include from base -->
+<!-- TODO: Get the search result from the server -->
+<!-- TODO: Display a bootstrap's card component (https://getbootstrap.com/docs/5.3/components/card/) containing the user informations for each found user -->
+
+
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+Search
+{% endblock %}
+
+{% block contents %}
+<h1>Search</h1>
+<div class="row">
+  {% for user in users %}
+  <div class="col-xl-3 mb-4">
+    <div class="card" style="width: 18rem;">
+      <!-- <img src="..." class="card-img-top" alt="..."> -->
+      <div class="card-body">
+        <h5 class="card-title">{{ user["firstname"] | capitalize}} {{ user["lastname"] | capitalize}}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ user.uid }}</li>
+        <li class="list-group-item"><a href="mailto:{{ user.email }}">{{ user.email }}</a></li>
+      </ul>
+      <div class="card-body">
+        <a href="{{ url_for('user.user_info_firestore', firestore_id=user['id']) }}" class="btn btn-primary">See
+          profile</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
