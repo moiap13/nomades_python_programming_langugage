@@ -1,9 +1,14 @@
-import os
-
-from flask import url_for
+import os, sys
 
 CURR_DIR: str = os.path.dirname(__file__)
 ROOT_DIR: str = os.path.dirname(CURR_DIR)
+
+sys.path.append(ROOT_DIR)
+
+from flask import url_for
+
+from config.firestore_connection import DocumentReference, db
+
 UPLOAD_DIR: str = os.path.join(ROOT_DIR, "static", "uploads")
 
 
@@ -93,4 +98,11 @@ class User:
             )
             if os.path.isfile(os.path.join(UPLOAD_DIR, pp_filename))
             else f"https://ui-avatars.com/api/?name={self.firstname}+{self.lastname}&background=random"
+        )
+
+    def get_document_reference(self) -> DocumentReference | None:
+        return (
+            db.collection("users").document(self.firestore_id)
+            if self.firestore_id
+            else None
         )

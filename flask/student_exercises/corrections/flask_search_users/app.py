@@ -8,6 +8,7 @@ from config.firestore_connection import db
 from routes.login import login_bp
 from routes.user import user_bp
 from routes.search import search_bp
+from routes.articles import articles_bp
 
 CURR_DIR: str = os.path.dirname(__file__)
 CONFIG: str = os.path.join(CURR_DIR, "config", "creds.json")
@@ -21,8 +22,8 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = config["secret_key"]
 app.register_blueprint(login_bp)
 app.register_blueprint(user_bp)
-# Add the search routes
 app.register_blueprint(search_bp)
+app.register_blueprint(articles_bp)
 
 
 @app.route("/")

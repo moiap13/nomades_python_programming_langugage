@@ -117,13 +117,13 @@ def login():
                 flash("Wrong credentials", "danger")
                 return render_template("login_wtf/login.html", form=form)
 
-        salt: str = user.get("salt", "")
+        salt: str = user.salt
         h_pwd: str = sha256((pwd + salt).encode()).hexdigest()
-        if user["pwd"] == h_pwd:
+        if user.pwd == h_pwd:
             # if login successful -> return "Login successful"
             session["loggedin"] = True
-            session["uid"] = user["uid"]
-            session["firestore_id"] = user.get("id", "")
+            session["uid"] = user.uid
+            session["firestore_id"] = user.firestore_id
             flash("Login successful", "success")
             return redirect(url_for("user.user_info"))
 

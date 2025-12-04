@@ -42,6 +42,26 @@
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             {% if session.get("loggedin") %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                User
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('user.user_info') }}">Show my profile</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('user.user_modify') }}">Modify my profile</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Articles
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('articles.my_articles') }}">Show my articles</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('articles.add_article') }}">Add new article</a></li>
+              </ul>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('login.logout') }}">Logout</a>
             </li>
