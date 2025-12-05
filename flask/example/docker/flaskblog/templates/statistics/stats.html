@@ -1,0 +1,16 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block contents %}
+<div class="row">
+  <div class="col-12">
+    <h1 style="color: red;">Statistics</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xl-12">
+    {{ plot | safe }}
+  </div>
+</div>
+{% endblock %}

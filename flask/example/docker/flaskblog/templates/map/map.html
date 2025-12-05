@@ -1,0 +1,11 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block contents %}
+<h2 class="mb-4">Carte Folium intégrée dans Flask</h2>
+
+<div class="card shadow p-3">
+  {{ map_html|safe }}
+</div>
+{% endblock %}

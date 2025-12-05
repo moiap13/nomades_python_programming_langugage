@@ -1,0 +1,31 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import displayField %}
+
+{% block title %} Add article{% endblock %}
+
+{% block contents %}
+<h1>Add article</h1>
+<div class="row">
+  <div class="col-12">
+    <form action="{{ url_for('articles.add_article') }}" method="post">
+      {{ displayField(form.title) }}
+
+      <div class="form-floating">
+        {{ form.body(class="form-control", style="height: 100px") }}
+        {{ form.body.label() }}
+        {% if form.body.errors %}
+        {% for error in form.body.errors %}
+        <div class="alert alert-danger mt-1" role="alert">
+          {{ error }}
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Add article</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
