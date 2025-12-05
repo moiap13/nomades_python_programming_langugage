@@ -1,0 +1,83 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+User Modify
+{% endblock %}
+
+{% block contents %}
+<h1>User Modify</h1>
+<form method="post" action="{{ url_for('user_modify') }}">
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>firstname</h5>
+        </div>
+        <div class="col-6">
+          <input type="text" name="tbx_firstname" value="{{ user['firstname'] }}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Lastname</h5>
+        </div>
+        <div class="col-6">
+          <input type="text" name="tbx_lastname" value="{{ user['lastname'] }}">
+        </div>
+      </div>
+      <div class=" row">
+        <div class="col-6 text-end">
+          <h5>Username</h5>
+        </div>
+        <div class="col-6">
+          <input type="text" name="tbx_uid" value="{{ user['uid'] }}" readonly>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>
+            Email
+          </h5>
+        </div>
+        <div class="col-6">
+          <input type="email" name="tbx_email" value="{{ user['email'] }}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Age</h5>
+        </div>
+        <div class="col-6">
+          <input type="number" name="tbx_age" value="{{ user['age'] }}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Old password</h5>
+        </div>
+        <div class="col-6">
+          <input type="password" name="tbx_old_pwd">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>New password</h5>
+        </div>
+        <div class="col-6">
+          <input type="password" name="tbx_new_pwd">
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary w-100">Modify user data</button>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <a href="{{ url_for('user_info') }}" class="btn btn-danger w-100">Cancel</a>
+        </div>
+      </div>
+    </div>
+</form>
+</div>
+{% endblock %}
