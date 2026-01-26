@@ -53,6 +53,7 @@ def mode(tableau: list[int]) -> int:
     """
     return None
 
+
 def variance(tableau: list[int]) -> float:
     """
     Function that returns the variance of the elements of the array
@@ -61,8 +62,6 @@ def variance(tableau: list[int]) -> float:
     """
     return None
 
-        
-    
 
 def standard_deviation(tableau: list[int]) -> float:
     """
@@ -125,7 +124,7 @@ def is_list_of_numbers(tableau) -> bool:
 
 def sort_ascending(arr: list[int]) -> list[int]:
     """
-    Function that returns the sorted array in ascending order 
+    Function that returns the sorted array in ascending order
     :param arr: the array to sort
     :return: the sorted array in ascending order
     """
@@ -134,7 +133,7 @@ def sort_ascending(arr: list[int]) -> list[int]:
 
 def sort_descending(arr: list[int]) -> list[int]:
     """
-    Function that returns the sorted array in descending order 
+    Function that returns the sorted array in descending order
     :param arr: the array to sort
     :return: the sorted array in descending order
     """
@@ -144,6 +143,10 @@ def sort_descending(arr: list[int]) -> list[int]:
 def median(tableau: list[int]) -> int:
     """
     Function that returns the median of the elements of the array
+    To compute the median:
+      1. Sort the array in ascending order
+      2. If the number of elements is odd, return the middle element
+      3. If the number of elements is even, return the average of the two middle elements
     :param tableau: the array to find the median of
     :return: the median of the elements of the array
     """
