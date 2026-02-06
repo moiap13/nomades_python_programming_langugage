@@ -1,0 +1,30 @@
+@startuml image_manipulation_file
+title Image Processing App - Activity Diagram
+
+start
+
+:Initialize app;
+
+repeat
+  :Select algorithm;
+  :Select parameters;
+  :Upload image;
+
+  if (User clicks "Compute"?) then (yes)
+    :Validate inputs;
+    if (Inputs valid?) then (yes)
+      :Run selected algorithm;
+      :Generate new image;
+      :Display result;
+      :Mark result as "up to date";
+    else (no)
+      :Show error message;
+    endif
+  else (no)
+    :Wait for user action;
+  endif
+
+repeat while (User changes algorithm\nor parameters\nor image?) is (yes)
+
+stop
+@enduml
