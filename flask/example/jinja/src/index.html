@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="fr">
+{% extends '_base.html' %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index</title>
-</head>
+{% block title %}
+For For
+{% endblock %}
 
-<body>
-  <h1>Hello PPL 2026 0103</h1>
-  <ul>
-    <li>Banane</li>
-    <li>Pomme</li>
-  </ul>
-</body>
+{% block content %}
+<h1>Welcome PPL 2026 0103</h1>
+<p>
+  This is the flask template website used in python programming language nomade course
 
-</html>
+</p>
+<p>
+  You can find the course materials in
+  <a href="https://github.com/moiap13/nomades_python_programming_langugage/tree/ppl_2026_0103">
+    <img src="https://brand.github.com/_next/static/media/logo-15.849ee050.png" alt="github logo" width="100px" />
+  </a>
+</p>
+{% endblock %}

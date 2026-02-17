@@ -52,7 +52,6 @@ numpy_pandas/student_exercises/implementations/data_visualization/
 numpy_pandas/student_exercises/implementations/jupyter/
 numpy_pandas/student_exercises/implementations/matplotlib/
 numpy_pandas/student_exercises/implementations/ML/
-numpy_pandas/student_exercises/implementations/numpy/
 
 # corrections
 numpy_pandas/student_exercises/corrections/data_aquisition/web_scrapping/basic/country_capitals/
@@ -67,7 +66,6 @@ numpy_pandas/student_exercises/corrections/numpy copy/
 
 
 # Flask - Web
-flask/env.yml
 flask/test.py
 
 # example
@@ -79,14 +77,12 @@ flask/example/flask_login_session/
 flask/example/flask_login_wtforms/
 flask/example/forms/
 flask/example/forms_files/
-flask/example/jinja/
 flask/example/posts_firestore/
 flask/example/ssti/
 
 # student_exercises
 # implementations
 flask/student_exercises/implementations/Firestore_posts/
-flask/student_exercises/implementations/first_server/
 flask/student_exercises/implementations/flask_login/
 flask/student_exercises/implementations/flask_login_firestore/
 flask/student_exercises/implementations/flask_login_firestore_query/
@@ -149,3 +145,28 @@ rest_api/todo_tuto/
 
 # package file 
 rest_api/__init__.py
+
+
+flask/example/BP/
+flask/example/WTForms/
+flask/example/docker/
+flask/example/folium/
+flask/example/jinja/src/_base.html
+flask/example/jinja/src/df.html
+flask/example/jinja/src/for.html
+flask/example/jinja/src/if.html
+flask/example/jinja/src/safe.html
+flask/example/jinja/src/var.html
+flask/example/plots/
+flask/example/sessions/
+flask/student_exercises/corrections/
+flask/student_exercises/implementations/flask_login_alpha/
+flask/student_exercises/implementations/flask_login_alpha_firestore/
+flask/student_exercises/implementations/flask_login_firestore_query_wtf/
+flask/student_exercises/implementations/flask_search_users/
+flask/student_exercises/implementations/flaskblog/
+flask/student_exercises/implementations/sessions/
+image_manipulation/
+sales/
+streamlit/student_exercises/implementation/sales/
+test_graph.png
