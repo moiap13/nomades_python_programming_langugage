@@ -1,0 +1,15 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block contents %}
+<h1>Register</h1>
+<form action="/register" method="post">
+  <input type="text" name="uid" placeholder="Username" required>
+  <input type="password" name="pwd" placeholder="Password" required>
+  <input type="password" name="pwd2" placeholder="Repeat password" required>
+  <button type="submit" class="btn btn-primary">Register</button>
+</form>
+{% endblock %}
