@@ -1,0 +1,59 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+User Info
+{% endblock %}
+
+{#
+{% block header_includes %}
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+{% endblock %}
+#}
+
+{% block contents %}
+<h1>User Info</h1>
+<div class="row">
+  <div class="col-12">
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <!-- TODO: Add the correct source for the avatar-->
+        <img width="200px" alt="user profile picture" src="{{ pp_path }}" class="rounded">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 text-end">
+        <h5>firstname</h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["firstname"] }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 text-end">
+        <h5>Lastname</h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["lastname"] }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 text-end">
+        <h5>Username</h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["uid"] }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 text-end">
+        <h5>
+          Email
+        </h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["email"] }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
