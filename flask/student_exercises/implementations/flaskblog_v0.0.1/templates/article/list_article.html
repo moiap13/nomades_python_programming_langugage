@@ -1,0 +1,26 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}List Articles{% endblock %}
+
+{% block contents %}
+<h1>List Articles</h1>
+<div class="row">
+
+  {% if articles %}
+  {% for article in articles %}
+  <div class="col-xl-3 mb-4">
+    <div class="card" style="width: 18rem;">
+      <!-- <img src="{{ pp_path }}" class="card-img-top" alt="user's profile picture"> -->
+      <div class="card-body">
+        <h5 class="card-title">{{ article.title }}</h5>
+        <p class="card-text">{{ article.body() }}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <h3>No articles yet</h3>
+  <a href="{{url_for('articles.add_article')}}">Click here to add a new article</a>
+  {% endif %}
+</div>
+{% endblock %}
