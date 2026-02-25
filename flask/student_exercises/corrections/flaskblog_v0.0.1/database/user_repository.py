@@ -11,28 +11,33 @@ from config.firestore import (
     DocumentSnapshot,
 )
 from models.user import User
+from exceptions.user import UserNotFoundError
 
 
 class UserRepository:
     def __init__(self, collection_name: str = "users"):
         self.collection: CollectionReference = db.collection(collection_name)
 
-    def get_user_by_firestore_id(self, firestore_id: str) -> User | None:
+    def get_user_by_firestore_id(self, firestore_id: str) -> User:
         user_snapshot: DocumentSnapshot = self.collection.document(firestore_id).get()
-        if user_snapshot.exists:
-            return User.from_dict(user_snapshot.to_dict() | {"id": user_snapshot.id})
+        if not user_snapshot.exists:
+            raise UserNotFoundError(f"User with id={firestore_id} does not exist")
 
-    def get_user_by_username(self, uid: str) -> User | None:
+        return User.from_dict(user_snapshot.to_dict() | {"id": user_snapshot.id})
+
+    def get_user_by_username(self, uid: str) -> User:
         user_sanpshots: list[DocumentSnapshot] = self.collection.where(
             "uid", "==", uid
         ).get()  # GET because we expect only one result
 
-        if len(user_sanpshots) == 1:
-            return User.from_dict(
-                user_sanpshots[0].to_dict() | {"id": user_sanpshots[0].id}
-            )
+        if len(user_sanpshots) != 1:
+            raise UserNotFoundError(f"User with uid={uid} does not exist")
 
-    def get_user_by_email(self, email: str) -> User | None:
+        return User.from_dict(
+            user_sanpshots[0].to_dict() | {"id": user_sanpshots[0].id}
+        )
+
+    def get_user_by_email(self, email: str) -> User:
         """
         Get a user by their email from the firestore users collection
         Use where condition on email key
@@ -41,10 +46,12 @@ class UserRepository:
             "email", "==", email
         ).get()  # GET because we expect only one result
 
-        if len(user_sanpshots) == 1:
-            return User.from_dict(
-                user_sanpshots[0].to_dict() | {"id": user_sanpshots[0].id}
-            )
+        if len(user_sanpshots) != 1:
+            raise UserNotFoundError(f"User with email={email} does not exist")
+
+        return User.from_dict(
+            user_sanpshots[0].to_dict() | {"id": user_sanpshots[0].id}
+        )
 
     def email_in_database(self, email: str) -> bool:
         """

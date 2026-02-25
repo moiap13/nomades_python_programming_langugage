@@ -25,6 +25,7 @@ app.register_blueprint(article_bp)
 
 @app.route("/")
 def index():
+
     return render_template("index.html")
 
 

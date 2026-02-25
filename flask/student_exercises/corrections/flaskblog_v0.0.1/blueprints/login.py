@@ -12,6 +12,8 @@ from flask import Blueprint, request, session, flash, redirect, url_for, render_
 from helpers.decorators import authenticated
 from helpers.random_password_generator import generate_password as generate_salt
 
+from exceptions.user import UserNotFoundError
+
 from database.user_repository import UserRepository
 from forms.login import RegisterForm
 
@@ -37,7 +39,11 @@ def register():
         email: str = form.email.data
         avatar = form.avatar.data
 
-        if _user_repository.get_user_by_username(username):
+        try:
+            _user_repository.get_user_by_username(username)
+        except UserNotFoundError:
+            pass
+        else:
             flash(f"Error: User with username={username} already exists", "danger")
             return render_template("login/register.html", form=form)
 
@@ -74,25 +80,25 @@ def login():
         uid: str = request.form["uid"]
         pwd: str = request.form["pwd"]
 
-        user: User = _user_repository.get_user_by_username(uid)
-        if not user:
-            user: User = _user_repository.get_user_by_email(uid)
+        try:
+            user: User = _user_repository.get_user_by_username(uid)
+        except UserNotFoundError:
+            try:
+                user: User = _user_repository.get_user_by_email(uid)
+            except UserNotFoundError:
+                flash("Wrong credentials", "danger")
+                return redirect(url_for("login.login"))
 
-        if user:
-            salt: str = user.salt
-            h_pwd: str = hashlib.sha256((pwd + salt).encode()).hexdigest()
-            if user.password == h_pwd:
-                session["loggedin"] = True
-                session["uid"] = uid
-                session["firestore_id"] = user.id
-                flash("Login successfull", "success")
-                if "wanted_route" in session:
-                    return redirect(session["wanted_route"])
-                return redirect(url_for("user.userinfo"))
-
-        # otw, return "Wrong credentials"
-        flash("Wrong credentials", "danger")
-        return redirect(url_for("login.login"))
+        salt: str = user.salt
+        h_pwd: str = hashlib.sha256((pwd + salt).encode()).hexdigest()
+        if user.password == h_pwd:
+            session["loggedin"] = True
+            session["uid"] = uid
+            session["firestore_id"] = user.id
+            flash("Login successfull", "success")
+            if "wanted_route" in session:
+                return redirect(session["wanted_route"])
+            return redirect(url_for("user.userinfo"))
 
     else:
         return render_template("login/login.html")

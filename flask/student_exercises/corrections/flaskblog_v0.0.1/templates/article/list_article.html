@@ -1,9 +1,9 @@
 {% extends 'includes/_base.html' %}
 
-{% block title %}List Articles{% endblock %}
+{% block title %}{{ page_title }}{% endblock %}
 
 {% block contents %}
-<h1>List Articles</h1>
+<h1>{{ page_title }}</h1>
 <div class="row">
 
   {% if articles %}
@@ -12,9 +12,21 @@
     <div class="card" style="width: 18rem;">
       <!-- <img src="{{ pp_path }}" class="card-img-top" alt="user's profile picture"> -->
       <div class="card-body">
-        <h5 class="card-title">{{ article.title }}</h5>
-        <p class="card-text">{{ article.body() }}</p>
+        <h5 class="card-title">
+          <a href="{{ url_for('articles.view_articles', firestore_id=article.id) }}">{{ article.title }}</a>
+        </h5>
+        <p class="card-text">{{ article.body_summury }}</p>
       </div>
+      {% if article.is_user_author(current_user) %}
+      <div class="card-footer d-flex gap-2">
+        <a class="btn btn-warning" href="{{ url_for('articles.modify_article', firestore_id=article.id) }}">
+          Modify Article
+        </a>
+        <form action="{{ url_for('articles.delete_article', firestore_id=article.id) }}" method="post">
+          <button type="submit" class="btn btn-danger">Delete article</button>
+        </form>
+      </div>
+      {% endif %}
     </div>
   </div>
   {% endfor %}

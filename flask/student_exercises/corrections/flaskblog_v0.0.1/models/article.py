@@ -17,6 +17,7 @@ class Article:
         title: str,
         body: str,
         authors: list[User],
+        body_summury: str = "",
         last_modify: datetime = datetime.now(),
         created_at: datetime = datetime.now(),
     ) -> None:
@@ -24,6 +25,7 @@ class Article:
         self.title = title
         self.body = body
         self.authors = authors
+        self.body_summury = body_summury
         self.last_modify = last_modify
         self.created_at = created_at
 
@@ -40,6 +42,7 @@ class Article:
             title=source.get("title", ""),
             body=source.get("body", ""),
             authors=source.get("authors", ""),
+            body_summury=source.get("body_summury", ""),
             last_modify=source.get("last_modify", None),
             created_at=source.get("created_at", datetime.now()),
         )
@@ -50,7 +53,11 @@ class Article:
         return {
             "title": self.title,
             "body": self.body,
+            "body_summury": self.body_summury,
             "authors": [user.to_dict(include_id=True) for user in self.authors],
             "last_modify": self.last_modify,
             "created_at": self.created_at,
         } | ({"id": self.id} if include_id else {})
+
+    def is_user_author(self, user: User) -> bool:
+        return user.id in [author.id for author in self.authors]
