@@ -1,0 +1,37 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+Posts per day
+{% endblock %}
+
+{#
+{% block header_includes %}
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+{% endblock %}
+#}
+
+{% block contents %}
+<h1>Posts per day</h1>
+<div class="row">
+  <div class="col-lg-6">
+    <h2>Total posts per day</h2>
+    {{ post_per_day_bar | safe }}
+  </div>
+  <div class="col-lg-6">
+    <h2>Posts per day and authors</h2>
+    {{ post_per_author_day_bar | safe }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <h2>Post per date cummulative sum</h2>
+    {{ post_per_date_cumsum | safe }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <h2>DataFrame</h2>
+    {{ df | safe }}
+  </div>
+</div>
+{% endblock %}
