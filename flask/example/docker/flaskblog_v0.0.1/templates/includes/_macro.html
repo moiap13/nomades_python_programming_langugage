@@ -1,0 +1,13 @@
+{% macro display_field(field) %} {# Field is a WTForm object #}
+<div class="mb-3">
+  {{ field.label(class="form-label") }}
+  {{ field(class="form-control", **kwargs) }}
+  {% if field.errors %}
+  <ul>
+    {% for error in field.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endmacro %}
