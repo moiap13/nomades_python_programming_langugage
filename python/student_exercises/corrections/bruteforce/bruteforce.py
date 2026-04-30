@@ -27,13 +27,18 @@ import time
 def brute_force_password(charset, length, target_hash):
     MAX_ITER = len(charset) ** length
     start_time = time.time()
-
-    # TODO: Implement the brute force algorithm
-    p: str = "aaaaa"
-    password = hashlib.sha256(p.encode()).hexdigest()
-    if password == target_hash:
-        # you found the password hourra
-        return p, time.time() - start_time
+    
+    for c0 in charset:
+      for c1 in charset:
+        for c2 in charset:
+          for c3 in charset:
+            for c4 in charset:
+              # Implement the brute force algorithm
+              p: str = c0+c1+c2+c3+c4
+              password = hashlib.sha256(p.encode()).hexdigest()
+              if password == target_hash:
+                  # you found the password hourra
+                  return p, time.time() - start_time
 
     return None, time.time() - start_time
 
