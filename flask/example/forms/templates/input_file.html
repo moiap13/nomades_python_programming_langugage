@@ -1,0 +1,13 @@
+{% extends 'includes/_base.html' %}
+
+{% block title%}Sending files{% endblock %}
+
+{% block contents %}
+
+<form action="/files" method="POST" enctype="multipart/form-data">
+  <input type="text" name="img_name" required>
+  <input type="file" name="fileInput" multiple accept="image/png, image/jpeg">
+  <input type="submit" value="Envoyer">
+</form>
+
+{% endblock %}
