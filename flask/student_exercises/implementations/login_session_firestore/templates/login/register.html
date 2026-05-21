@@ -1,0 +1,40 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block contents %}
+<h1>Register</h1>
+<form action="{{ url_for('register') }}" method="post"> <!-- Add the action using using url_for -->
+  <div class="mb-3">
+    <label for="uid" class="form-label">Username</label>
+    <input type="text" class="form-control" id="uid" name="uid">
+  </div>
+  <div class="mb-3">
+    <label for="firstname" class="form-label">Fisrtname</label>
+    <input type="text" class="form-control" id="firstname" name="firstname">
+  </div>
+  <div class="mb-3">
+    <label for="lastname" class="form-label">Lastname</label>
+    <input type="text" class="form-control" id="lastname" name="lastname">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" name="email">
+  </div>
+  <div class="mb-3">
+    <label for="age" class="form-label">Age</label>
+    <input type="number" class="form-control" id="age" name="age">
+  </div>
+  <div class="mb-3">
+    <label for="pwd" class="form-label">Password</label>
+    <input type="password" class="form-control" id="pwd" name="pwd">
+  </div>
+  <div class="mb-3">
+    <label for="pwd2" class="form-label">Repeat Password</label>
+    <input type="password" class="form-control" id="pwd2" name="pwd2">
+  </div>
+  <button type="submit" class="btn btn-primary">Register</button>
+</form>
+{% endblock %}
