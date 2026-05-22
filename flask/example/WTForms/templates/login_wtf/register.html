@@ -1,0 +1,20 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import display_input %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block contents %}
+<h1>Register</h1>
+<form action="{{ url_for('register') }}" method="post"> <!-- Add the action using using url_for -->
+  {{ display_input(form.uid) }}
+  {{ display_input(form.firstname) }}
+  {{ display_input(form.lastname) }}
+  {{ display_input(form.email) }}
+  {{ display_input(form.age) }}
+  {{ display_input(form.pwd) }}
+  {{ display_input(form.pwd2) }}
+  <button type="submit" class="btn btn-primary">Register</button>
+</form>
+{% endblock %}
