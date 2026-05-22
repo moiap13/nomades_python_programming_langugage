@@ -1,0 +1,1 @@
+#TODO: WTForms: Create register and login from classes (look at flask/example/WTForms project)
