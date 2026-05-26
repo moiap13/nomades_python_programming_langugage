@@ -1,0 +1,69 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import display_input %}
+<!-- TODO: Feel free to update the diplay_input function or create a new one -->
+
+{% block title %}
+User Info
+{% endblock %}
+
+{% block contents %}
+<h1>User Info</h1>
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-12 text-center">
+        <img src="{{ user.pp_filename }}" alt="User profile picture" width="200px" class="rounded-circle" />
+      </div>
+    </div>
+    <form action="{{ url_for('user.user_modify') }}" method="post">
+      <div class="row mt-5">
+        <div class="col-6 text-end">
+          <h5>firstname</h5>
+        </div>
+        <div class="col-6">
+          {{ display_input(form.firstname) }} <!-- TODO: Maybe adapt with you own wtform object -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Lastname</h5>
+        </div>
+        <div class="col-6">
+          {{ display_input(form.lastname) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Username</h5>
+        </div>
+        <div class="col-6">
+          {{ display_input(form.uid) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>
+            Email
+          </h5>
+        </div>
+        <div class="col-6">
+          {{ display_input(form.email) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Age</h5>
+        </div>
+        <div class="col-6">
+          {{ display_input(form.age) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-warning">Modify</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
