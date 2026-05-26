@@ -1,0 +1,16 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import display_input %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block contents %}
+<h1>Login</h1>
+<form action="{{ url_for('login') }}" method="post"> <!-- Add the action using using url_for -->
+  <!-- WTForms: Display the input using the form object (tips: use the macro function) -->
+  {{ display_input(form.uid) }}
+  {{ display_input(form.pwd) }}
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endblock %}
