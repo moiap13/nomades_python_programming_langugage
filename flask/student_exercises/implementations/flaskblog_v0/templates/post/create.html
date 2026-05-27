@@ -1,0 +1,17 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import display_input %}
+
+{% block title %}
+Create Post
+{% endblock %}
+
+{% block contents %}
+<h1>Create new post</h1>
+
+<form action="{{ url_for('post.create_post') }}" method="post">
+  {{ display_input(form.title) }}
+  {{ display_input(form.body) }}
+
+  <button type="submit" class="btn btn-primary">Add new post</button>
+</form>
+{% endblock %}
