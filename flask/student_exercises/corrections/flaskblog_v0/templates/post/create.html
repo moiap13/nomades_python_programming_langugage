@@ -9,6 +9,7 @@ Create Post
 <h1>Create new post</h1>
 
 <form action="{{ url_for('post.create_post') }}" method="post">
+  {{ display_input(form.city) }}
   {{ display_input(form.title) }}
   {{ display_input(form.body) }}
 

@@ -4,11 +4,12 @@ from .user import User
 
 
 class Post:
-  def __init__(self, id: str="", title: str="", body: str="", summary: str="", author: User=None, created_at: datetime=datetime.now()):
+  def __init__(self, id: str="", title: str="", body: str="", summary: str="", latlng: dict[str, float]={}, author: User=None, created_at: datetime=datetime.now()):
     self.id = id
     self.title = title
     self.body = body
     self.summary = summary
+    self.latlng = latlng
     self.author = author
     self.created_at = created_at
   
@@ -19,6 +20,7 @@ class Post:
       title=source.get("title", ""),
       body=source.get("body", ""),
       summary=source.get("summary", ""),
+      latlng=source.get("latlng", {}),
       author=source.get("author", None),
       created_at=source.get("created_at", None)
     )
@@ -29,6 +31,7 @@ class Post:
       "title": self.title,
       "body": self.body,
       "summary": self.summary,
+      "latlng": self.latlng,
       "author": self.author,
       "created_at": self.created_at
     }
@@ -39,6 +42,7 @@ class Post:
       "title": self.title,
       "body": self.body,
       "summary": self.summary,
+      "latlng": self.latlng,
       "author": self.author.to_dict(),
       "created_at": self.created_at
     } 

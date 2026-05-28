@@ -5,6 +5,7 @@ sys.path.append(ROOT_DIR)
 import json
 
 from flask import Blueprint, flash, redirect, render_template, request, session, url_for, Response
+import requests
 
 from helpers.decorators import authenticated
 from repositories.post import PostRepository
@@ -52,12 +53,26 @@ def create_post() -> str:
 
   if request.method == "POST" and form.validate():
     title: str = form.title.data
+    city: str = form.city.data
     body: str = form.body.data
     author: User = user_repository.get_by_firestore_id(session['firestore_id'])
 
-    summary: str = post_summarizer.basic_chat(f"Please summyrize in one sentence this blog text: {body}")
+    url: str = f"https://api.latlng.work/api?q={city}"
+    response = requests.get(url, headers={"X-Api-Key": config["latlng.work_api_key"]})
 
-    post: Post = Post(title=title, body=body, author=author, summary=summary)
+    latlng: dict[str, float] = {}
+    if response.status_code == 200:
+      latlng_data = response.json()["features"][0]["geometry"]["coordinates"] 
+      latlng = {
+        "lat": latlng_data[0],
+        "lng": latlng_data[1],
+      }
+
+    summary: str = post_summarizer.basic_chat(f"Please summyrize in one sentence this blog text: {body}")
+    tags: list[str] = post_summarizer.basic_chat(f"Given this post text: {body} locate the 10 most importants tags and returns them as a json list of string where each tag is an element of the list")
+    print(tags)
+
+    post: Post = Post(title=title, body=body, author=author, summary=summary, latlng=latlng)
     post = post_repository.create(post)
 
     flash(f"Post created successfully with id={post.id}", "success")
