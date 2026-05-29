@@ -1,0 +1,70 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import display_input %}
+<!-- TODO: Feel free to update the diplay_input function or create a new one -->
+
+{% block title %}
+User Info
+{% endblock %}
+
+{% block contents %}
+<h1>User Info</h1>
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-12 text-center">
+        <img src="{{ user.pp_filename }}" alt="User profile picture" width="200px" class="rounded-circle" />
+      </div>
+    </div>
+    <form action="{{ url_for('user.user_modify') }}" method="post">
+      <div class="row mt-5">
+        <div class="col-6 text-end">
+          <h5>{{ form.firstname.label() }}</h5>
+        </div>
+        <div class="col-6">
+          {{ display_input(form.firstname, show_label=false, value=user.firstname) }}
+          <!-- TODO: Maybe adapt with you own wtform object -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>{{ form.lastname.label() }}</h5>
+        </div>
+        <div class="col-6">
+          {{ display_input(form.lastname, show_label=false, value=user.lastname) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>{{ form.uid.label() }}</h5>
+        </div>
+        <div class="col-6">
+          {{ display_input(form.uid, show_label=false, value=user.uid) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>
+            {{ form.email.label() }}
+          </h5>
+        </div>
+        <div class="col-6">
+          {{ display_input(form.email, show_label=false, value=user.email) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>{{form.age.label()}}</h5>
+        </div>
+        <div class="col-6">
+          {{ display_input(form.age, show_label=false, value=user.age) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-warning">Modify</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

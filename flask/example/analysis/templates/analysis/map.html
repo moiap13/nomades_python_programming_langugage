@@ -1,0 +1,15 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+Map
+{% endblock %}
+
+{% block contents %}
+<h1>Map</h1>
+
+<div class="row">
+  <div class="col-12">
+    {{ map_html | safe }}
+  </div>
+</div>
+{% endblock %}
