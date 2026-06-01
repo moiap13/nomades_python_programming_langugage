@@ -1,0 +1,37 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import display_input %}
+
+{% block title %}
+Analysis | Authors
+{% endblock %}
+
+{% block contents %}
+<h1>Authors analysis</h1>
+<h5><a href="http://localhost:8501/posts">Streamlit example</a></h5>
+
+<div class="row">
+  <div class="col-3">
+    <form action="{{ url_for('analysis.authors') }}" method="post">
+      {{ display_input(form.start_date) }}
+      {{ display_input(form.end_date) }}
+      {{ display_input(form.authors) }}
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <div class="col-12">
+        <h1>Post per date</h1>
+        {{ post_per_date_bar_html | safe }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h1>Post per date and authors</h1>
+        {{ post_per_authors_date_bar_html | safe }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

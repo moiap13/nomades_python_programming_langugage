@@ -1,0 +1,8 @@
+flask
+google-genai
+plotly
+folium
+wtforms
+pandas
+email-validator
+firebase-admin
