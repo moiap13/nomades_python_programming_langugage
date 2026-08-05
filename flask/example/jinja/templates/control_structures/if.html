@@ -1,0 +1,14 @@
+{% extends '_includes/_base.html' %}}
+
+{% block title %}If{% endblock %}
+{% block content %}
+
+<h1>If</h1>
+
+{% if age >= 18 %}
+<p>You are allowed to vote</p>
+{% else %}
+<p>You are not allowed to vote</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends '_includes/_base.html' %}
+
+{% block title %}Login{% endblock %}
+{% block content %}
+<h1>Login</h1>
+<form action="/login" method="post">
+  <input type="text" name="tbx_uid" placeholder="Username">
+  <input type="password" name="tbx_pwd" placeholder="Password">
+  <button type="submit">Login</button>
+</form>
+
+{% endblock %}
