@@ -1,0 +1,17 @@
+{% extends '_includes/_base.html' %}
+
+{% block title %}Filter{% endblock %}
+{% block content %}
+
+<h1>Welcome
+  <span style="color: red;">{{ fn | capitalize }}</span>
+  <span style="color: purple">{{ ln | upper }}</span>
+</h1>
+
+<p>{{ comment }}</p>
+
+{{ df_table | safe }}
+
+{{ plot_html | safe }}
+
+{% endblock %}
