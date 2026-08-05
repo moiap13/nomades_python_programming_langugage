@@ -1,0 +1,20 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block contents %}
+<h1>Login</h1>
+<form action="/login" method="post">
+  <div class="form-group">
+    <label for="uid">Username</label>
+    <input type="text" class="form-control" id="uid" name="uid" placeholder="Enter username">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password</label>
+    <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endblock %}
