@@ -22,6 +22,7 @@ def get_user_by_uid(uid: str) -> dict[str, str]:
 
     return {}
 
+# TODO: update add user to store all the user informations
 def add_user(uid: str, pwd: str):
   with open(CSV_FILE, "a") as users_csv_file:
       # Add the new user to the CSV file

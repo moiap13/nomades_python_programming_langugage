@@ -44,8 +44,9 @@ def register_post():
     pwd: str = request.form.get("pwd", "").strip()
     # get the user password 2 from form
     pwd2: str = request.form.get("pwd2", "").strip()
+    # TODO: get the remaining infomrations (firstname, lastname, email)
 
-    # validate that all the informations are sets
+    # TODO: validate that all the informations are sets
     if uid == '' or not pwd or not pwd2:
         # return "Error: Please fill all the form's fields"
         return render_template("login/register.html", error="Error: Please fill all the form's fields")
