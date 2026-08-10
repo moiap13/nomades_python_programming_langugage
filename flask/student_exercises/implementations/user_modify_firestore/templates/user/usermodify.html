@@ -1,0 +1,67 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import display_input %}
+<!-- TODO: Feel free to update the diplay_input function or create a new one -->
+
+{% block title %}
+User Modify
+{% endblock %}
+
+{% block contents %}
+<h1>User Info</h1>
+<div class="row">
+  <div class="col-12">
+    <form action="{{ url_for('user_modify') }}" method="post">
+      <div class="row mt-5">
+        <div class="col-6 text-end">
+          <h5>firstname</h5>
+        </div>
+        <div class="col-6">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="firstname" name="firstname" value="">
+            <!-- TODO: set default values -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Lastname</h5>
+        </div>
+        <div class="col-6">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="lastname" name="lastname" value="">
+            <!-- TODO: set default values -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Username</h5>
+        </div>
+        <div class="col-6">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="username" name="username" value="">
+            <!-- TODO: set default values -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>
+            Email
+          </h5>
+        </div>
+        <div class="col-6">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="email" name="email" value=""> <!-- TODO: set default values -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-warning">Modify</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
