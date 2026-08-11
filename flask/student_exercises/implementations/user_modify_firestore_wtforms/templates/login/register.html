@@ -1,0 +1,24 @@
+{% extends 'includes/_base.html' %}
+{% from "includes/_macros.html" import display_input %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block contents %}
+<h1>Register</h1>
+{% if error %}
+<h5 style="color: red;">{{ error }}</h5>
+{% endif %}
+<form action="{{ url_for('register_post') }}" method="post" enctype="multipart/form-data">
+  {{ display_input(form.uid) }}
+  {{ display_input(form.firstname) }}
+  {{ display_input(form.lastname) }}
+  {{ display_input(form.email) }}
+  {{ display_input(form.pp) }}
+  {{ display_input(form.pwd) }}
+  {{ display_input(form.pwd2) }}
+
+  <button type="submit" class="btn btn-primary">Register</button>
+</form>
+{% endblock %}

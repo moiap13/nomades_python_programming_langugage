@@ -1,0 +1,64 @@
+{% extends 'includes/_base.html' %}
+<!-- TODO: Transform for using WTForms -->
+<!-- TODO: Don't forget to allow the profile picture update -->
+
+{% block title %}
+User Modify
+{% endblock %}
+
+{% block contents %}
+<h1>User Modify</h1>
+<div class="row">
+  <div class="col-12">
+    <form action="{{ url_for('user_modify') }}" method="post">
+      <div class="row mt-5">
+        <div class="col-6 text-end">
+          <h5>firstname</h5>
+        </div>
+        <div class="col-6">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="firstname" name="firstname" value="{{user['firstname']}}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Lastname</h5>
+        </div>
+        <div class="col-6">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="lastname" name="lastname" value="{{user['lastname']}}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>Username</h5>
+        </div>
+        <div class="col-6">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="uid" name="uid" value="{{user.uid}}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-end">
+          <h5>
+            Email
+          </h5>
+        </div>
+        <div class="col-6">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="email" name="email" value="{{user.get('email', '')}}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-warning">Modify</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

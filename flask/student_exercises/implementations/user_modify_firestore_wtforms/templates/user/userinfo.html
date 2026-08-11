@@ -1,0 +1,59 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+User Info
+{% endblock %}
+
+{% block contents %}
+<h1>User Info</h1>
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <!-- TODO: Handle missing profile picture -->
+      <div class="col-12 text-center">
+        <img src="{{ url_for('static', filename='uploads/' + user['pp_filename']) }}" alt="User profile picture"
+          width="200px" class="rounded-circle" />
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-6 text-end">
+        <h5>firstname</h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["firstname"] }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 text-end">
+        <h5>Lastname</h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["lastname"] }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 text-end">
+        <h5>Username</h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["uid"] }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 text-end">
+        <h5>
+          Email
+        </h5>
+      </div>
+      <div class="col-6">
+        <p>{{ user["email"] }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <a href="{{ url_for('user_modify') }}" class="btn btn-primary">Modify</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

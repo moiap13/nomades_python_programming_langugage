@@ -1,0 +1,11 @@
+{% macro display_input(field) %}
+<div class="mb-3">
+  {{ field.label(class="form-label") }}
+  {{ field(class="form-control", **kwargs) }}
+  {% if field.errors %}
+  {% for error in field.errors %}
+  <p style="color: red;">{{ error }}</p>
+  {% endfor %}
+  {% endif %}
+</div>
+{% endmacro %}
