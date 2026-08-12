@@ -1,0 +1,28 @@
+import os
+import json
+
+# import pandas as pd
+from flask import Flask, render_template
+
+from routes.login import login_bp
+from routes.user import user_bp
+
+app = Flask(__name__)
+
+CURR_DIR: str = os.path.dirname(__file__)
+CREDS_FILE: str = os.path.join(CURR_DIR, "config", "creds.json")
+
+with open(CREDS_FILE) as config_file:
+  config: dict[str, str] = json.load(config_file)
+
+app.config["SECRET_KEY"] = config["secret_key"]
+
+app.register_blueprint(login_bp)
+app.register_blueprint(user_bp)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000, debug=True)

@@ -1,0 +1,27 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+All Posts
+{% endblock %}
+
+{% block contents %}
+<h1>All Posts</h1>
+
+<div class="row">
+  {% for post in posts %} <!-- posts variable is a list[Post] -->
+  <div class="col-lg-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary"><!-- TODO: display author full name --></h6>
+        <p class="card-text">
+          {{ post.body }}
+        </p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
