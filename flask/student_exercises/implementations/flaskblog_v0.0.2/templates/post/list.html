@@ -1,0 +1,37 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+{{ page_title }}
+{% endblock %}
+
+{% block contents %}
+<h1>{{ page_title}} ({{ posts | length }})</h1>
+
+<div class="row">
+  {% if not posts %}
+  <div class="col-lg-12">
+    <div class="alert alert-info" role="alert">
+      There are no posts. To create a post click <a href="{{ url_for('post.create_post') }}">here</a>.
+    </div>
+  </div>
+  {% endif %}
+  {% for post in posts %} <!-- posts variable is a list[Post] -->
+  <div class="col-lg-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">
+          {{ user_service.get_user_by_uid(post.author).get_fullname() }} <!-- display author full name -->
+          ({{ post.author }})
+        </h6>
+        <p class="card-text">
+          {{ post.body }}
+        </p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
