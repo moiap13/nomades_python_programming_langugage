@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-8">
+    <h1>
+      {{ user.get_fullname() }}
+    </h1>
+  </div>
+  <div class="col-4">
+    {% if user.pp_filename %}
+    <img src="{{ url_for('static', filename='uploads/' + user.pp_filename) }}" alt="User profile picture" width="20px"
+      class="rounded-circle" />
+    {% else %}
+    <img src="https://ui-avatars.com/api/?name={{ user.firstname }}+{{ user.lastname }}&background=random"
+      alt="User profile picture" width="20px" class="rounded-circle" />
+    {% endif %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">{{ user.email }}</div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <form action="{{ url_for('post.get_by_author', author_id=user.firestore_id) }}" method="GET">
+      <button type="submit" class="btn btn-primary">View user's posts</button>
+    </form>
+  </div>
+</div>

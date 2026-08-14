@@ -1,0 +1,20 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macros.html' import display_input %}
+
+{% block title %}
+Create Post
+{% endblock %}
+
+{% block contents %}
+<h1>Create new post</h1>
+
+<!-- post.create_post implies that the view function is named `create_post` and is in the `post` blueprint -->
+<form action="{{ url_for('post.create_post') }}" method="post">
+  <!-- form.title implies that the form parameter passed from render_template is named `form` -->
+  {{ display_input(form.title) }}
+  <!-- form.title implies that the form parameter passed from render_template is named `form` -->
+  {{ display_input(form.body) }}
+
+  <button type="submit" class="btn btn-primary">Add new post</button>
+</form>
+{% endblock %}

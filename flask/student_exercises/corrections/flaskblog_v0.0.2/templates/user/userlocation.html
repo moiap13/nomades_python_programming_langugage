@@ -1,0 +1,14 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+User Location
+{% endblock %}
+
+{% block contents %}
+<h1>User Location</h1>
+<div class="row">
+  <div class="col-12">
+    {{ map_html | safe }}
+  </div>
+</div>
+{% endblock %}
