@@ -1,0 +1,15 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+{{ page_title }}
+{% endblock %}
+
+{% block contents %}
+<h1>{{ page_title}} ({{ posts | length }})</h1>
+
+<div class="row">
+  <iframe id="inlineFrameExample" title="Inline Frame Example" style="height: 100vh; width: 100%;"
+    src="http://127.0.0.1:8501">
+  </iframe>
+</div>
+{% endblock %}

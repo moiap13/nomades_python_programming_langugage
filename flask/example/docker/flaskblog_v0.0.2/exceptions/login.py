@@ -1,0 +1,2 @@
+class WrongCredentialsError(Exception):
+  pass
