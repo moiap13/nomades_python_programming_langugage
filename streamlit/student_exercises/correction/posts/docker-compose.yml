@@ -1,0 +1,9 @@
+services:
+  streamlit-demo:
+    image: moiap13/streamlit_authors_example:latest
+    container_name: streamlit_authors_example
+    ports:
+      - "9000:8501"
+    volumes:
+      - ./posts.csv:/app/posts.csv:ro
+      - ./users.csv:/app/users.csv:ro
