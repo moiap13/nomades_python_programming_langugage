@@ -1,0 +1,26 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+All Posts
+{% endblock %}
+
+{% block contents %}
+<h1>All Posts</h1>
+
+<div class="row">
+  {% for post in posts %}
+  <div class="col-4">
+    <div class="card" style="max-width: 320px;">
+      <div class="card-body">
+        <h4 class="card-title">{{ post.title }}</h4>
+        <p class="card-subtitle fg-3">{{ post.author.get_fullname() }}</p>
+        <p class="card-text">
+          {{post.body}}
+        </p>
+        <a href="#">Card link</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
