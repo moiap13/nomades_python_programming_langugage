@@ -1,0 +1,31 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block contents %}
+<h1>{{ title }}</h1>
+
+<div class="row">
+  {% for post in posts %}
+  <div class="col-4">
+    <div class="card" style="max-width: 320px;">
+      <div class="card-body">
+        <h4 class="card-title">{{ post.title }}</h4>
+        <p class="card-subtitle fg-3">{{ post.author.get_fullname() }}</p>
+        <p class="card-text">
+          {{post.body}}
+        </p>
+        {% if post.is_author(current_user) %}
+        <form action="{{ url_for('post.delete') }}" method="post">
+          <input type="hidden" name="post_id" value="{{ post.firestore_id }}">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
