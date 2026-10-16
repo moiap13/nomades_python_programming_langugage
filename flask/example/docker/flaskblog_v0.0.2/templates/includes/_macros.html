@@ -1,0 +1,11 @@
+{% macro display_input(field) %}
+<div class="mb-3">
+  {{ field.label(class="form-label") }}
+  {{ field(class="form-control") }}
+  {% for error in field.errors %}
+  <div>
+    <small style="color: red">{{ error }}</small>
+  </div>
+  {% endfor %}
+</div>
+{% endmacro %}
