@@ -1,0 +1,21 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macro.html' import display_field %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block contents %}
+<h1>Register</h1>
+<!-- Add enctype="multipart/form-data" to allow the upload of files -->
+<form action="{{ url_for('login.register') }}" method="post" enctype="multipart/form-data">
+  {{ display_field(form.uid) }}
+  {{ display_field(form.firstname) }}
+  {{ display_field(form.lastname) }}
+  {{ display_field(form.email) }}
+  {{ display_field(form.avatar) }}
+  {{ display_field(form.pwd) }}
+  {{ display_field(form.pwd2) }}
+  <button type="submit" class="btn btn-primary">Register</button>
+</form>
+{% endblock %}

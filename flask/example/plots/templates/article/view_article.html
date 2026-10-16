@@ -1,0 +1,25 @@
+{% extends 'includes/_base.html' %}
+{% from 'includes/_macro.html' import display_field %}
+
+{% block title %} View Article {% endblock %}
+
+{% block contents %}
+<div class="row">
+  <div class="col-12">
+    <h1>{{ article.title }}</h1>
+    <h5>by {{ authors_name | join(', ') }}</h5>
+    <p>{{ article.body }}</p>
+
+    {% if article.is_user_author(current_user) %}
+    <div class="mt-3 d-flex gap-2">
+      <a class="btn btn-warning" href="{{ url_for('articles.modify_article', firestore_id=article.id) }}">Modify
+        Article
+      </a>
+      <form action="{{ url_for('articles.delete_article', firestore_id=article.id) }}" method="post">
+        <button type="submit" class="btn btn-danger">Delete article</button>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

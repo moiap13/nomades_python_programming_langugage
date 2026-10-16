@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-4 text-left ">
+      <img width="30px" alt="user profile picture"
+        src="https://ui-avatars.com/api/?name={{ user['name'] }}&background=random" class="rounded">
+    </div>
+    <div class="col-8">
+      <h3>
+        {{user['name']}}
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <ul>
+      <li>
+        {{user['address']['street']}}
+      </li>
+      <li>
+        {{user['address']['city']}}
+      </li>
+      <li>
+        {{user['address']['zipcode']}}
+      </li>
+    </ul>
+  </div>
+</div>

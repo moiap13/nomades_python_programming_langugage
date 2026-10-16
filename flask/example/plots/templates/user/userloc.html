@@ -1,0 +1,29 @@
+{% extends 'includes/_base.html' %}
+
+{% block title %}
+User Locations
+{% endblock %}
+
+{#
+{% block header_includes %}
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+{% endblock %}
+#}
+
+{% block contents %}
+<h1>User Locations</h1>
+<div class="row">
+  <div class="col-10">
+    {{ userloc_map | safe }}
+  </div>
+  <div class="col-2">
+    <ul>
+      {% for user in users %}
+      <li>
+        {{ user.name }}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
